@@ -13,16 +13,20 @@ import Exceptions.ExcessFieldsException;
 import Exceptions.MissingFieldsException;
 import Exceptions.MissingQuotesException;
 import Part_1.PartOneException;
+import Part_1.Method;
 
 public class Driver {
     
     public static void do_part1(String part1_manifest) {
         try (BufferedReader manifestReader = new BufferedReader(new FileReader(part1_manifest))) {
-            String inputFileName;
+            System.out.println(manifestReader.readLine());
+            manifestReader.close();
+            /*String inputFileName;
             while ((inputFileName = manifestReader.readLine()) != null) {
                 System.out.println("Reading input file: " + inputFileName);
-                PartOneException.processInputFile(inputFileName.trim());
-            }
+                //PartOneException.processInputFile(inputFileName.trim());
+                Method.processCSVLine(inputFileName);
+            }*/
         } catch (IOException e) {
             System.err.println("Error reading part1_manifest.txt: " + e.getMessage());
         }
