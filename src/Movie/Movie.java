@@ -9,7 +9,7 @@ public class Movie implements Serializable {
     protected int duration;
     protected String genres;
     protected String rating;
-    protected int score;
+    protected double score;
     protected String director;
     protected String actor1;
     protected String actor2;
@@ -21,14 +21,14 @@ public class Movie implements Serializable {
         this.duration = 0;
         this.genres = null;
         this.rating = null;
-        this.score = 0;
+        this.score = 0.0;
         this.director = null;
         this.actor1 = null;
         this.actor2 = null;
         this.actor3 = null;
     }
 
-    public Movie(int year, String title, int duration, String genres, String rating, int score, String director,
+    public Movie(int year, String title, int duration, String genres, String rating, double score, String director,
             String actor1, String actor2, String actor3) {
         this.year = year;
         this.title = title;
@@ -62,7 +62,7 @@ public class Movie implements Serializable {
         return rating;
     }
 
-    public int getScore() {
+    public double getScore() {
         return score;
     }
 
@@ -102,7 +102,7 @@ public class Movie implements Serializable {
         this.rating = rating;
     }
 
-    public void setScore(int score) {
+    public void setScore(double score) {
         this.score = score;
     }
 
