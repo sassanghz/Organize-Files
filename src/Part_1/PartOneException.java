@@ -1,6 +1,9 @@
 package Part_1;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import Exceptions.BadDurationException;
@@ -13,9 +16,6 @@ import Exceptions.MissingFieldsException;
 import Exceptions.MissingQuotesException;
 
 public class PartOneException extends Exception {
-    public PartOneException(String message) {
-         super(message);
-    }
 
     public static void validateAndWriteRecord(String[] record, BufferedWriter[] genreWriters) throws IOException, PartOneException, MissingFieldsException, MissingQuotesException, ExcessFieldsException, BadYearException, BadDurationException, BadRatingException, BadScoreException, BadGenreException{
         // Syntax check
@@ -83,5 +83,33 @@ public class PartOneException extends Exception {
             }
         }
         return false;
+    }
+
+    public static void processInputFile(String inputFileName) {
+        
+        try(BufferedReader reader = new BufferedReader(new FileReader(inputFileName))){
+            FileWriter badRecordsWriter = null;
+            try {
+                badRecordsWriter = new FileWriter("bad_movie_records.txt");
+
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    String[] record = line.split(",");
+                        try {
+                            BufferedWriter[] genreWriters = new BufferedWriter[17];
+                            validateAndWriteRecord(record, genreWriters);
+                        } catch (MissingFieldsException | MissingQuotesException | ExcessFieldsException | BadYearException | BadDurationException | BadRatingException | BadScoreException | BadGenreException | PartOneException e) {
+                            badRecordsWriter.write(line + "\n");
+                        }
+                }
+            } finally {
+                if (badRecordsWriter != null) {
+                    badRecordsWriter.close();
+                }
+            }
+            
+        }catch(IOException e){
+            System.err.println("Error reading file " + inputFileName + ": " + e.getMessage());
+        }
     }
 }

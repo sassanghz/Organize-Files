@@ -2,6 +2,7 @@ package Part_1;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Method {
     
@@ -13,5 +14,15 @@ public class Method {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void processCSVLine(String inputFileName) {
+       try(Scanner scanner = new Scanner(inputFileName)) {
+           while(scanner.hasNextLine()) {
+               String line = scanner.nextLine();
+               String[] record = line.split(",");
+               System.out.println("Processing record: " + record);
+           }
+       }
     }
 }
