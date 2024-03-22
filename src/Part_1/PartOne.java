@@ -12,6 +12,7 @@ import Exceptions.BadDurationException;
 import Exceptions.BadGenreException;
 import Exceptions.BadRatingException;
 import Exceptions.BadScoreException;
+import Exceptions.BadTitleException;
 import Exceptions.BadYearException;
 import Exceptions.ExcessFieldsException;
 import Exceptions.MissingFieldsException;
@@ -83,18 +84,19 @@ public class PartOne {
             }else if(!movieRecords[1].startsWith("\"") || !movieRecords[1].endsWith("\"")){
                 throw new MissingQuotesException("Syntax Error: Missing quotes in record: " + line);
             }
-                }catch(BadYearException | BadTitleException | BadScoreException | BadDurationException | BadRatingException | BadNameException e){
-                    String writeOutputToFile = "bad_movie_records.txt";
-                    FileWriter writer = new FileWriter(writeOutputToFile, true);
-                    BufferedWriter writeToBadFile = new BufferedWriter(writer);
-                    writeToBadFile.write("\n------------------------\n");
-                    writeToBadFile.write("Semantic Error:" + fileName);
-                    writeToBadFile.write("\n------------------------\n");
-                    writeToBadFile.write("\nRecord: " + line);
-                    writeToBadFile.write("\n------------------------\n");
-                    writeToBadFile.write("");
-                    writeToBadFile.close();
-                }
+
+        }catch(BadYearException | BadTitleException | BadScoreException | BadDurationException | BadRatingException | BadNameException e){
+            String writeOutputToFile = "bad_movie_records.txt";
+            FileWriter writer = new FileWriter(writeOutputToFile, true);
+            BufferedWriter writeToBadFile = new BufferedWriter(writer);
+            writeToBadFile.write("\n------------------------\n");
+            writeToBadFile.write("Semantic Error:" + fileName);
+            writeToBadFile.write("\n------------------------\n");
+            writeToBadFile.write("\nRecord: " + line);
+            writeToBadFile.write("\n------------------------\n");
+            writeToBadFile.write("");
+            writeToBadFile.close();
+        }
     }
     
     public static String findGenre(String movieRecords){

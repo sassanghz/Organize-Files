@@ -1,6 +1,7 @@
 package Exceptions;
 
-public class MissingFieldsException extends Throwable{
+public class MissingFieldsException extends Exception{
+    
     public MissingFieldsException(String message) {
         super(message);
     }
