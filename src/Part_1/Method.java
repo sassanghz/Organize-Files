@@ -21,7 +21,6 @@ public class Method {
            while(scanner.hasNextLine()) {
                String line = scanner.nextLine();
                String[] record = line.split(",");
-               System.out.println("Processing record: " + record);
            }
        }
     }
