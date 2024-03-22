@@ -98,6 +98,11 @@ public class PartOne {
             writeToBadFile.close();
         }
     }
+
+    private static boolean isValidRating(String rating) {
+        return rating.equals("G") || rating.equals("PG") || rating.equals("PG-13") ||
+                rating.equals("R") || rating.equals("NC-17") || rating.equals("Unrated");
+    }
     
     public static String findGenre(String movieRecords){
         if(movieRecords.startsWith("\"") && movieRecords.endsWith("\"")){
