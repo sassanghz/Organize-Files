@@ -2,7 +2,7 @@ package Exceptions;
 
 public class BadScoreException extends Exception{
     
-    public BadScoreException() {
-        super("Invalid score");
+    public BadScoreException(String message) {
+        super(message);
     }
 }
