@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.Buffer;
 
 import Exceptions.BadDurationException;
 import Exceptions.BadGenreException;
@@ -17,6 +16,7 @@ import Exceptions.BadYearException;
 import Exceptions.ExcessFieldsException;
 import Exceptions.MissingFieldsException;
 import Exceptions.MissingQuotesException;
+import Exceptions.BadNameException;
 
 public class PartOne {
     
@@ -64,7 +64,7 @@ public class PartOne {
 
      }
 
-     public static void validateAndWriteRecord(String line, String fileName) throws IOException{
+     public static void validateAndWriteRecord(String line, String fileName) throws IOException, BadGenreException, MissingFieldsException, ExcessFieldsException, MissingQuotesException, BadYearException, BadTitleException, BadScoreException, BadDurationException, BadRatingException, BadNameException{
         
         String genre = "";
         String[] movieRecords = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
