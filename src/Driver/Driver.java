@@ -64,7 +64,5 @@ public class Driver {
          * do_part3(part3_manifest);
          * return;
          */
-
-        /* testing */
     }
 }
