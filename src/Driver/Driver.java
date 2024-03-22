@@ -2,6 +2,7 @@ package Driver;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.File;
 
@@ -19,12 +20,19 @@ public class Driver {
                 if(file.isFile() && file.getName().endsWith(".csv")){
                     try{
                         BufferedReader br = new BufferedReader(new FileReader(file));
+                        
+                        FileWriter badRecordsWriter = new FileWriter("bad_movie_records.txt");
+                        FileWriter part2_manifestWriter = new FileWriter("part2_manifest.txt");
+                        
                         String line = "";
                         while((line = br.readLine()) != null){
-                            System.out.println(line);
+                            String inputFileName = line.trim();
+                            Method.partitionMovies(inputFileName, badRecordsWriter, part2_manifestWriter);
                         }
                         System.out.println();
                         br.close();
+                        badRecordsWriter.close();
+                        part2_manifestWriter.close();
                         
                     }catch(IOException e){
                         System.out.println("Error reading file: " + file.getName());
