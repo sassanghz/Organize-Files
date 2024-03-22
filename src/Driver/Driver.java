@@ -7,12 +7,14 @@ import java.io.IOException;
 import java.io.File;
 
 import Part_1.Method;
+import Part_1.PartOne;
 
 public class Driver {
     
     public static void do_part1(String part1_manifest) {
-       
-        File folder = new File(part1_manifest);
+
+       /*
+        * File folder = new File(part1_manifest);
         File[] listOftextFiles = folder.listFiles();
 
         if(listOftextFiles != null){
@@ -43,21 +45,13 @@ public class Driver {
         }else{
             System.out.println("No files found in the directory");
         }
-
-    }
-
-    public static String do_part2(String part2_manifest) {
-        return part2_manifest;
-    }
-
-    public static String do_part3(String part3_manifest) {
-        return part3_manifest;
+        */
     }
 
     public static void main(String[] args) {
         String part1_manifest = "DataBase/";
 
-        do_part1(part1_manifest);
+        PartOne.doPart1(part1_manifest);
         /*  String part2_manifest = do_part1(part1_manifest);
         String part3_manifest = do_part2(part2_manifest);
         do_part3(part3_manifest);

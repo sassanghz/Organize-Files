@@ -1,8 +1,8 @@
 package Exceptions;
 
-public class BadRatingException extends Exception{
+public class BadRatingException extends Throwable{
     
-    public BadRatingException() {
-        super("Invalid rating");
+    public BadRatingException(String message) {
+        super(message);
     }
 }

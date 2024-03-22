@@ -1,8 +1,8 @@
 package Exceptions;
 
-public class BadDurationException extends Exception{
+public class BadDurationException extends Throwable{
     
-    public BadDurationException() {
-        super("Invalid duration");
+    public BadDurationException(String message) {
+        super(message);
     }
 }

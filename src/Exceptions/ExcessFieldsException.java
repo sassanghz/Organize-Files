@@ -1,8 +1,8 @@
 package Exceptions;
 
-public class ExcessFieldsException extends Exception{
+public class ExcessFieldsException extends Throwable{
     
-    public ExcessFieldsException() {
-        super("Error: Excess fields in record! " );
+    public ExcessFieldsException(String message) {
+        super(message );
     }
 }

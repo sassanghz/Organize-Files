@@ -1,8 +1,8 @@
 package Exceptions;
 
-public class BadScoreException extends Exception{
+public class BadScoreException extends Throwable{
     
-    public BadScoreException() {
-        super("Invalid score");
+    public BadScoreException(String message) {
+        super(message);
     }
 }

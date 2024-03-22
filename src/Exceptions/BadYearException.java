@@ -1,8 +1,8 @@
 package Exceptions;
 
-public class BadYearException extends Exception{
+public class BadYearException extends Throwable{
 
-    public BadYearException() {
-        super("Invalid year");
+    public BadYearException(String message) {
+        super(message);
     }
 }

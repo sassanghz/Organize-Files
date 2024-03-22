@@ -1,8 +1,8 @@
 package Exceptions;
 
-public class MissingQuotesException extends Exception{
+public class MissingQuotesException extends Throwable{
     
-    public MissingQuotesException() {
-        super("Error: Missing quotes in record! " );
+    public MissingQuotesException(String message) {
+        super(message);
     }
 }

@@ -1,8 +1,8 @@
 package Exceptions;
 
-public class BadGenreException  extends Exception{
+public class BadGenreException  extends Throwable{
         
-        public BadGenreException() {
-            super("Invalid genre");
+        public BadGenreException(String message) {
+            super(message);
         }
 }
