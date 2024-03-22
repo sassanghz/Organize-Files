@@ -70,25 +70,64 @@ public class PartOne {
         String[] movieRecords = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
 
         try{
+
             if(movieRecords.length == 10){
+
                 genre = findGenre(movieRecords[3]);
+
                 if(!isValidGenre(genre)){
+
                     throw new BadGenreException("Semantic Error: " + genre + " is not a valid genre");
+
                 }
+
                 String writeToFile = OutputFile(genre);
                 writeRecordToFile(writeToFile, line);
+
             }else if(movieRecords.length < 10){
+
                 throw new MissingFieldsException("Syntax Error: Missing fields in record: " + line);
+
             }else if(movieRecords.length > 10){
+
                 throw new ExcessFieldsException("Syntax Error: Excess fields in record: " + line);
+
             }else if(!movieRecords[1].startsWith("\"") || !movieRecords[1].endsWith("\"")){
+
                 throw new MissingQuotesException("Syntax Error: Missing quotes in record: " + line);
+
+            }else if(Integer.parseInt(movieRecords[0]) < 1990 || Integer.parseInt(movieRecords[0]) > 1999){
+
+                throw new BadYearException("Semantic Error: Year is not between 1990 and 1999 in record: " + line);
+
+            }else if(Integer.parseInt(movieRecords[2]) < 0 || Integer.parseInt(movieRecords[2]) > 300){
+
+                throw new BadDurationException("Semantic Error: Duration is not between 0 and 300 in record: " + line);
+
+            }else if(Double.parseDouble(movieRecords[5]) < 0 || Double.parseDouble(movieRecords[5]) > 10){
+
+                throw new BadScoreException("Semantic Error: Score is not between 0 and 10 in record: " + line);
+
+            }else if(!isValidRating(movieRecords[4])){
+
+                throw new BadRatingException("Semantic Error: Rating is not valid in record: " + line);
+
+            }else if(movieRecords[1].split("\"").length > 3){
+
+                throw new BadTitleException("Semantic Error: Excess fields in record: " + line);
+
+            }else{
+
+                throw new BadNameException("Semantic Error: Name is not valid in record: " + line);
+
             }
 
         }catch(BadYearException | BadTitleException | BadScoreException | BadDurationException | BadRatingException | BadNameException e){
+           
             String writeOutputToFile = "bad_movie_records.txt";
             FileWriter writer = new FileWriter(writeOutputToFile, true);
             BufferedWriter writeToBadFile = new BufferedWriter(writer);
+           
             writeToBadFile.write("\n------------------------\n");
             writeToBadFile.write("Semantic Error:" + fileName);
             writeToBadFile.write("\n------------------------\n");
@@ -100,6 +139,7 @@ public class PartOne {
     }
 
     private static boolean isValidRating(String rating) {
+        
         return rating.equals("G") || rating.equals("PG") || rating.equals("PG-13") ||
                 rating.equals("R") || rating.equals("NC-17") || rating.equals("Unrated");
     }
