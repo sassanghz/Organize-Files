@@ -26,12 +26,12 @@ public class PartOne {
 
      public static String[] fileNames;
 
-     public static void doPart1(String part1_manifest){
+     public static void doPart1(){
         
         BufferedReader reader = null;
 
         try{
-            File folder = new File("DataBase/");
+            File folder = new File("src/Driver/part1_manifest.txt");
             reader = new BufferedReader(new FileReader(folder));
 
             int sizeLine = Integer.parseInt(reader.readLine());
