@@ -23,7 +23,7 @@ public class PartTwo {
                 String genreFile = line.trim();
                 Movie[] movies = loadMoviesFromFile(genreFile);
 
-                String binaryFileName = genreFile.replace(".txt", ".bin");
+                String binaryFileName = genreFile.replace(".txt", ".ser");
                 serializeMovies(movies, binaryFileName);
 
                 manifestWriter.write(binaryFileName);
