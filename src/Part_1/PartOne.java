@@ -26,7 +26,7 @@ public class PartOne {
 
      public static String[] fileNames;
 
-     public static void doPart1(){
+     public static void doPart1(String part1_manifest){
         
         BufferedReader reader = null;
 
@@ -139,7 +139,7 @@ public class PartOne {
     }
 
     private static boolean isValidRating(String rating) {
-        
+
         return rating.equals("G") || rating.equals("PG") || rating.equals("PG-13") ||
                 rating.equals("R") || rating.equals("NC-17") || rating.equals("Unrated");
     }
