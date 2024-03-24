@@ -27,18 +27,33 @@ public class PartOne {
      public static String[] fileNames;
 
      public static void doPart1(){
+        // String manifest = "part1_manifest.txt";
+        // java.io.File maninfestFile = new java.io.File("src/Driver/"+manifest);
         
+        // // todo : for loop, that reads the manifest file and reads the files in the manifest file
+
+
+
+
+
+
         BufferedReader reader = null;
 
+        java.io.File directoryName = new java.io.File("src/DataBase/");
+
         try{
-            File folder = new File("src/Driver/part1_manifest.txt");
-            reader = new BufferedReader(new FileReader(folder));
-
-            int sizeLine = Integer.parseInt(reader.readLine());
-            fileNames = new String[sizeLine];
-
-            for(int i = 0; i < sizeLine; i++){
-                fileNames[i] = reader.readLine();
+            //File folder = new File("src/Driver/part1_manifest.txt");
+            for (int i = 0; i < directoryName.list().length; i++) {
+                String count =  String.valueOf(i);
+                final File folder = new File("src/DataBase/Movies199"+count+".csv");
+                reader = new BufferedReader(new FileReader(folder));
+                int sizeLine = Integer.parseInt(reader.readLine());
+                fileNames = new String[sizeLine];
+                
+                for(int z = 0; z < sizeLine; z++){
+                    fileNames[z] = reader.readLine();
+                }
+                
             }
 
             reader.close();
