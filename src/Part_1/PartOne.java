@@ -78,6 +78,9 @@ public class PartOne {
                             System.out.println("Hello ");
                         }
                         if (values.length == 10) {
+                            // add code to check if movie has errors [use validateAndWriteRecord() method]
+                            // and store it into movieArray[] if good, if bad it will go to badMovie[]
+
                             for (int j = 0; j < 10; j++) {
                                 movieArray[goodMovieIndex] = line;
                             }
@@ -88,9 +91,11 @@ public class PartOne {
                             badMovieIndex++;
 
                         }
+                        System.out.println("CHECKING: " + values[3]); // testing
                     }
                 }
             }
+            System.out.println("MOVIE: " + movieArray[598]); // testing
 
             reader.close();
 
