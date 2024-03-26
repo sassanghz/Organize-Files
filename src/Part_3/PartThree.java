@@ -81,30 +81,54 @@ public class PartThree {
 
             switch (choice.toLowerCase()) {
                 case "s":
+                    
                     displayGenreMenu(all_movies);
+                    
                     System.out.print("Enter Your Choice: ");
                     int genreChoice = scanner.nextInt();
                     scanner.nextLine(); // Consume newline
+                        
                     if (genreChoice >= 1 && genreChoice <= all_movies.length) {
+                        /*
+                         * If the user's input is valid, this line sets currentGenreIndex to the index of the selected genre in the all_movies array.
+                         * Since array indices start from 0 and genreChoice starts from 1, we subtract 1 
+                         */
                         currentGenreIndex = genreChoice - 1;
+                        /*The current index for the previously selected genre needs to be reset to start
+                        * from the beginning when navigating through the movies of the newly selected genre.
+                         */
                         currentIndices[currentGenreIndex] = 0; // Reset current index for selected genre
+            
                         System.out.println("Navigating " + getGenreName(genreChoice - 1) + " movies (" +
-                                all_movies[currentGenreIndex].length + " records)");
+                        all_movies[currentGenreIndex].length + " records)");
+            
                     } else {
+            
                         System.out.println("Invalid genre choice.");
+            
                     }
                     break;
+            
                 case "n":
+            
                     if (currentGenreIndex != -1) {
+            
                         navigateMovies(all_movies[currentGenreIndex], currentIndices, scanner);
+            
                     } else {
+            
                         System.out.println("Please select a movie array first.");
+            
                     }
                     break;
+            
                 case "x":
+            
                     System.out.println("Exiting navigation.");
                     return;
+                
                 default:
+            
                     System.out.println("Invalid choice. Please try again.");
             }
         }
@@ -121,8 +145,8 @@ public class PartThree {
         System.out.println("----------------------------");
     }
 
-    private static String getGenreName(int index) {
-        switch (index) {
+    private static String getGenreName(int i) {
+        switch (i) {
             case 0: return "musical";
             case 1: return "comedy";
             case 2: return "animation";
@@ -140,6 +164,7 @@ public class PartThree {
             case 14: return "western";
             case 15: return "romance";
             case 16: return "thriller";
+            case 17: return "Exit";
             default: return "Invalid Genre";
         }
     }
@@ -199,6 +224,8 @@ public class PartThree {
         System.out.println("Genre: " + movie.getGenre());
         System.out.println("Director: " + movie.getDirector());
         System.out.println("Rating: " + movie.getRating());
+        System.out.println("Duration: " + movie.getDuration() + " minutes");
+        System.out.println("Actors: " + movie.getActor1() + ", " + movie.getActor2() + ", " + movie.getActor3());
         System.out.println("----------------------------");
     }
 }
