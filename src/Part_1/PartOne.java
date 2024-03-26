@@ -150,13 +150,15 @@ public class PartOne {
 
                     boolean goodMovieYear = isValidYear(Integer.parseInt(movieRecords[movieFile][1]));
 
-                    boolean goodMovieGenre = isValidGenre(movieRecords[movieFile][4]);
+                    boolean goodMovieTitle = isValidTitle(movieRecords[movieFile][2]);
 
                     boolean goodMovieDuration = isValidDuration(Integer.parseInt(movieRecords[movieFile][3]));
 
-                    boolean goodMovieScore = isValidScore(Double.parseDouble(movieRecords[movieFile][6]));
+                    boolean goodMovieGenre = isValidGenre(movieRecords[movieFile][4]);
 
                     boolean goodMovieRating = isValidRating(movieRecords[movieFile][5]);
+
+                    boolean goodMovieScore = isValidScore(Double.parseDouble(movieRecords[movieFile][6]));
 
                 }
             }
@@ -279,7 +281,7 @@ public class PartOne {
     }
 
     private static boolean isValidTitle(String title) {
-        if (title) {
+        if (title.startsWith("\"") && title.endsWith("\"")) {
             return true;
         } else {
             return false;
@@ -317,6 +319,10 @@ public class PartOne {
         } else {
             return false;
         }
+    }
+
+    private static boolean isValidDirector(String director) {
+
     }
 
     private static boolean isValidArtist1(String artist1) {
