@@ -28,12 +28,15 @@ public class PartOne {
 
     public static String doPart1(String part1_manifest) {
         BufferedReader reader = null;
+        FileWriter writer = null;
         String line = "";
+        String output = "part2_manifest.txt";
 
-        File directoryName = new File("src/DataBase/");
+        File directoryName = new File(part1_manifest);
 
         try {
-            // File folder = new File("src/Driver/part1_manifest.txt");
+            /*
+             *  // File folder = new File("src/Driver/part1_manifest.txt");
             int row = 0;
             for (int i = 0; i < directoryName.list().length; i++) {
                 String count = String.valueOf(i);
@@ -48,6 +51,26 @@ public class PartOne {
                     }
                 }
             }
+             */
+
+            writer = new FileWriter("part2_manifest.txt");
+            int row = 0;
+            for(int i = 0; i < directoryName.list().length; i++){
+                String count = String.valueOf(i);
+                File folder = new File("src/DataBase/Movies199" + count + ".csv");
+
+                reader = new BufferedReader(new FileReader(folder));
+
+                while((line = reader.readLine()) != null){
+                    if(line.split("") != null){
+                        row++;
+                        System.out.println(line);
+                        output += line + "\n";
+                        writer.write(line + "\n");// writing to the textfile
+                    }
+                }
+            }
+           
             System.out.println("THE ROW IS : " + row);
             String[] badMovie = new String[row];
             String[] movieArray = new String[row];
@@ -69,7 +92,8 @@ public class PartOne {
                         if (categories.length == 10) {
                             System.out.println("CHECKING: " + categories[9]); // testing
                             if (validateAndWriteRecord(reader, movieArray, categories, row)) {
-
+                                System.out.println("Program is validating and writing to record"); // testing
+                                output += line + "\n";
                             }
                             // add code to check if movie has errors [use validateAndWriteRecord() method]
                             // and store it into movieArray[] if good, if bad it will go to badMovie[]
@@ -89,8 +113,6 @@ public class PartOne {
             }
             System.out.println("MOVIE: " + movieArray[598]); // testing
 
-            reader.close();
-
             // sorting the bad movies into it's file
             // for (String fileName : fileNames) {
 
@@ -107,10 +129,32 @@ public class PartOne {
             // fileReader.close();
             // }
             // }
-        } catch (Exception e) {
+        } catch (IOException e){
             System.out.println("Error reading file: " + e.getMessage());
             e.printStackTrace(); // testing
+        } catch (BadGenreException | MissingFieldsException | ExcessFieldsException | MissingQuotesException
+                | BadYearException | BadTitleException | BadScoreException | BadDurationException | BadRatingException
+                | BadNameException e) {
+            e.printStackTrace();
+        }catch (Exception e) {
+            System.out.println("Error reading file: " + e.getMessage());
+            e.printStackTrace(); // testing
+        }finally{
+            try {
+                if (reader != null) {
+                    reader.close();
+                }
+                if (writer != null) {
+                    writer.close();
+                }
+            } catch (IOException e) {
+                System.out.println("Error closing file: " + e.getMessage());
+                e.printStackTrace(); // testing
+            }
         }
+        
+        //String is returned, which contains all the movie records that passed the validation process and were written to the text file.
+        return output;
 
     }
 

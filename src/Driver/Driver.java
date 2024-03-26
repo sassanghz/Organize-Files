@@ -8,7 +8,7 @@ public class Driver {
 
     public static void main(String[] args) {
 
-        String part1_manifest = "DataBase/";
+        String part1_manifest = "src/DataBase/";
 
         String part2_manifest = PartOne.doPart1(part1_manifest);
        
