@@ -26,7 +26,7 @@ public class PartOne {
 
     public static String[] fileNames;
 
-    public static void doPart1() {
+    public static String doPart1(String part1_manifest) {
         BufferedReader reader = null;
         String line = "";
 

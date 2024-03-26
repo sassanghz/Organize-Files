@@ -54,7 +54,7 @@ public class Movie implements Serializable {
         return duration;
     }
 
-    public String getGenres() {
+    public String getGenre() {
         return genres;
     }
 
