@@ -160,6 +160,21 @@ public class PartOne {
 
                     boolean goodMovieScore = isValidScore(Double.parseDouble(movieRecords[movieFile][6]));
 
+                    boolean goodMovieDirector = isValidDirector(movieRecords[movieFile][7]);
+
+                    boolean goodMovieActor1 = isValidActor1(movieRecords[movieFile][8]);
+
+                    boolean goodMovieActor2 = isValidActor2(movieRecords[movieFile][9]);
+
+                    boolean goodMovieActor3 = isValidActor3(movieRecords[movieFile][10]);
+
+                    if (goodMovieLength && goodMovieYear && goodMovieTitle && goodMovieDuration && goodMovieGenre
+                            && goodMovieRating
+                            && goodMovieScore && goodMovieDirector && goodMovieActor1 && goodMovieActor2
+                            && goodMovieActor3) {
+                        System.out.println(movieRecords[movieFile][movieCategory] + " MOVIE IS GOOD");
+                    }
+
                 }
             }
         } catch (BadYearException | BadTitleException | BadScoreException | BadDurationException | BadRatingException
@@ -322,19 +337,35 @@ public class PartOne {
     }
 
     private static boolean isValidDirector(String director) {
-
+        if (!(director == "")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    private static boolean isValidArtist1(String artist1) {
-
+    private static boolean isValidActor1(String actor1) {
+        if (!(actor1 == "")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    private static boolean isValidArtist2(String artist2) {
-
+    private static boolean isValidActor2(String actor2) {
+        if (!(actor2 == "")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    private static boolean isValidArtist3(String artist3) {
-
+    private static boolean isValidActor3(String actor3) {
+        if (!(actor3 == "")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static String findGenre(String movieRecords) {
