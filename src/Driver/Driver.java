@@ -14,7 +14,7 @@ public class Driver {
 
         String part3_manifest = PartTwo.doPart2(part2_manifest);
        
-        Movie[][] all_movies = PartThree.do_part3("part3_manifest.txt");
+        Movie[][] all_movies = PartThree.doPart3(part3_manifest);
         if (all_movies != null) {
             PartThree.navigateMovieArrays(all_movies);
         } else {
