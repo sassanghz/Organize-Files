@@ -11,6 +11,8 @@ public class Driver {
         String part1_manifest = "src/DataBase/";
 
         String part2_manifest = PartOne.doPart1(part1_manifest);
+
+        String part3_manifest = PartTwo.doPart2(part2_manifest);
        
         Movie[][] all_movies = PartThree.do_part3("part3_manifest.txt");
         if (all_movies != null) {

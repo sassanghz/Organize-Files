@@ -12,8 +12,9 @@ import Movie.Movie;
 
 public class PartTwo {
     
-    public static void doPart2(){
-         
+    public static String doPart2(String part2_manifest) {
+        String resultMessage = "part3_manifest.txt";
+
         try {
             BufferedReader manifestReader = new BufferedReader(new FileReader("part2_manifest.txt"));
             BufferedWriter manifestWriter = new BufferedWriter(new FileWriter("part3_manifest.txt"));
@@ -32,9 +33,14 @@ public class PartTwo {
 
             manifestReader.close();
             manifestWriter.close();
+
+            resultMessage = "Serialization successful!";
         } catch (IOException e) {
             e.printStackTrace();
+            resultMessage = "Error occurred during serialization.";
         }
+
+        return resultMessage;
     }
 
     private static Movie[] loadMoviesFromFile(String fileName) throws IOException {
