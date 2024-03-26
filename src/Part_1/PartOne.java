@@ -147,23 +147,23 @@ public class PartOne {
                 for (int movieCategory = 1; movieCategory < 10 + 1; movieCategory++) {
                     boolean goodMovieLength = isValidMovieLength(movieRecords[movieFile]);
 
-                    boolean goodMovieYear = isValidYear(Integer.parseInt(movieRecords[movieFile][0]));
+                    boolean goodMovieYear = isValidYear(Integer.parseInt(movieRecords[movieFile][1]));
 
-                    boolean goodMovieGenre = isValidGenre(movieRecords[movieFile][3]);
+                    boolean goodMovieGenre = isValidGenre(movieRecords[movieFile][4]);
 
-                    boolean goodMovieDuration = isValidDuration(Integer.parseInt(movieRecords[movieFile][2]));
+                    boolean goodMovieDuration = isValidDuration(Integer.parseInt(movieRecords[movieFile][3]));
 
-                    boolean goodMovieScore = isValidScore(Double.parseDouble(movieRecords[movieFile][5]));
+                    boolean goodMovieScore = isValidScore(Double.parseDouble(movieRecords[movieFile][6]));
 
-                    boolean goodMovieRating = isValidRating(movieRecords[movieFile][4]);
+                    boolean goodMovieRating = isValidRating(movieRecords[movieFile][5]);
 
                     boolean goodMovieTitle = isValidTitle(movieRecords[movieFile][1]);
 
-                    boolean goodMovieArtist1 = isValidArtist1(movieRecords[movieFile][7]);
+                    boolean goodMovieArtist1 = isValidArtist1(movieRecords[movieFile][8]);
 
-                    boolean goodMovieArtist2 = isValidArtist2(movieRecords[movieFile][8]);
+                    boolean goodMovieArtist2 = isValidArtist2(movieRecords[movieFile][9]);
 
-                    boolean goodMovieArtist3 = isValidArtist3(movieRecords[movieFile][9]);
+                    boolean goodMovieArtist3 = isValidArtist3(movieRecords[movieFile][10]);
 
                     
 
