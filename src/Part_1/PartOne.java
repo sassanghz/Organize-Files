@@ -114,8 +114,7 @@ public class PartOne {
 
     }
 
-    public static boolean validateAndWriteRecord(BufferedReader reader, String[] movieArray, String[] categories,
-            int goodMovieIndex)
+    public static boolean validateAndWriteRecord(BufferedReader reader, String[] movieArray, String[] categories, int goodMovieIndex)
             throws IOException, BadGenreException, MissingFieldsException,
             ExcessFieldsException, MissingQuotesException,
             BadYearException, BadTitleException, BadScoreException, BadDurationException,
@@ -150,18 +149,72 @@ public class PartOne {
 
                     boolean goodMovieYear = isValidYear(Integer.parseInt(movieRecords[movieFile][0]));
 
-                    boolean goodMovieGenre = isValidGenre(movieRecords[movieFile][4]);
+                    boolean goodMovieGenre = isValidGenre(movieRecords[movieFile][3]);
 
                     boolean goodMovieDuration = isValidDuration(Integer.parseInt(movieRecords[movieFile][2]));
 
-                    boolean goodMovieScore = isValidScore(Double.parseDouble(movieRecords[movieFile][6]));
+                    boolean goodMovieScore = isValidScore(Double.parseDouble(movieRecords[movieFile][5]));
 
-                    boolean goodMovieRating = isValidRating(movieRecords[movieFile][5]);
+                    boolean goodMovieRating = isValidRating(movieRecords[movieFile][4]);
+
+                    boolean goodMovieTitle = isValidTitle(movieRecords[movieFile][1]);
+
+                    boolean goodMovieArtist1 = isValidArtist1(movieRecords[movieFile][7]);
+
+                    boolean goodMovieArtist2 = isValidArtist2(movieRecords[movieFile][8]);
+
+                    boolean goodMovieArtist3 = isValidArtist3(movieRecords[movieFile][9]);
+
+                    
+
+                    if (goodMovieLength && goodMovieYear && goodMovieGenre && goodMovieDuration && goodMovieScore
+                            && goodMovieRating && goodMovieTitle && goodMovieArtist1 && goodMovieArtist2
+                            && goodMovieArtist3) {
+                        String genre = findGenre(movieRecords[movieFile][3]);
+                        String writeToFile = OutputFile(genre);
+                        writeRecordToFile(writeToFile, line);
+
+                    } else if(!goodMovieLength) {
+                        throw new MissingFieldsException("Syntax Error: Missing fields in record: " + line);
+                    }else if(!goodMovieYear) {
+                        throw new BadYearException("Semantic Error: Year is not between 1990 and 1999 in record: " + line);
+                    }else if(!goodMovieGenre) {
+                        throw new BadGenreException("Semantic Error: " + movieRecords[movieFile][3] + " is not a valid genre");
+                    }else if(!goodMovieDuration) {
+                        throw new BadDurationException("Semantic Error: Duration is not between 0 and 300 in record: " + line);
+                    }else if(!goodMovieScore) {
+                        throw new BadScoreException("Semantic Error: Score is not between 0 and 10 in record: " + line);
+                    }else if(!goodMovieRating) {
+                        throw new BadRatingException("Semantic Error: Rating is not valid in record: " + line);
+                    }else if(!goodMovieTitle) {
+                        throw new BadTitleException("Semantic Error: Excess fields in record: " + line);
+                    }else if(!goodMovieArtist1) {
+                        throw new BadNameException("Semantic Error: Name is not valid in record: " + line);
+                    }else if(!goodMovieArtist2) {
+                        throw new BadNameException("Semantic Error: Name is not valid in record: " + line);
+                    }else if(!goodMovieArtist3) {
+                        throw new BadNameException("Semantic Error: Name is not valid in record: " + line);
+                    }
 
                 }
             }
-        } catch (BadYearException | BadTitleException | BadScoreException | BadDurationException | BadRatingException
-                | BadNameException e) {
+        } catch (BadYearException | BadTitleException | BadScoreException | BadDurationException | BadRatingException | BadNameException e) {
+
+            String writeOutputToFile = "bad_movie_records.txt";
+            FileWriter writer = new FileWriter(writeOutputToFile, true);
+            BufferedWriter writeToBadFile = new BufferedWriter(writer);
+            
+            writeToBadFile.write("\n------------------------\n");
+            writeToBadFile.write("Semantic Error:" + movieRecords[0][0]);
+            writeToBadFile.write("\n------------------------\n");
+            writeToBadFile.write("\nRecord: " + movieRecords[0][0]);
+            writeToBadFile.write("\n------------------------\n");
+
+            writeToBadFile.close();
+
+            return false;
+
+
         }
         return true;
     }
@@ -320,14 +373,29 @@ public class PartOne {
 
     private static boolean isValidArtist1(String artist1) {
 
+        if(artist1 != null && !artist1.isEmpty() && artist1.matches("^[a-zA-Z]*$")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private static boolean isValidArtist2(String artist2) {
 
+        if(artist2 != null && !artist2.isEmpty() && artist2.matches("^[a-zA-Z]*$")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private static boolean isValidArtist3(String artist3) {
 
+        if(artist3 != null && !artist3.isEmpty() && artist3.matches("^[a-zA-Z]*$")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static String findGenre(String movieRecords) {
