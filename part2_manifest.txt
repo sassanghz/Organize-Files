@@ -600,4 +600,8 @@ l999,A Dog of Flanders,,,PG,6.3,Kevin Brodie,Bruce McGill,Cheryl Ladd,Jack Warde
 1999,The Blair Witch Project,81,Horror,R,6.4,Daniel Myrick,Heather Donahue,Joshua Leonard,Michael C. Williams
 1999,Runaway Bride,116,Comedy,PG,5.5,Garry Marshall,Julia Roberts,Christopher Meloni,Hector Elizondo
 1999,Big Daddy,93,Comedy,PG-13,6.4,Dennis Dugan,Steve Buscemi,Adam Sandler,Joey Lauren Adams
-1999,The Matrix,136,Action,R,8.7,Lana Wachowski,Keanu Reeves,Marcus Chong,Gl
+1999,The Matrix,136,Action,R,8.7,Lana Wachowski,Keanu Reeves,Marcus Chong,Gloria Foster
+1999,Austin Powers: The Spy Who Shagged Me,95,Action,PG-13,6.6,Jay Roach,Muse Watson,Verne Troyer,Robert Wagner
+1999,Toy Story 2,82,Adventure,G,7.9,John Lasseter,Tom Hanks,John Ratzenberger,Wayne Knight
+1999,The Sixth Sense,107,Drama,PG-13,8.1,M. Night Shyamalan,Bruce Willis,Haley Joel Osment,Olivia Williams
+1999,Star Wars: Episode I - The Phantom Menace,136,Action,PG,6.5,George Lucas,Natalie Portman,Liam Neeson,Ian McDiarmid
