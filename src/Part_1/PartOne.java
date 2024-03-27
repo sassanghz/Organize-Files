@@ -99,7 +99,6 @@ public class PartOne {
                                 System.out.println("Program is validating and writing to the bad record:"); // testing
                                 badOutput += line + "\n";
                             }
-                            // add code to check if movie has errors [use validateAndWriteRecord() method]
                             // and store it into movieArray[] if good, if bad it will go to badMovie[]
 
                             for (int j = 0; j < 10; j++) {
@@ -288,7 +287,7 @@ public class PartOne {
             }
         }
 
-        System.out.println("HEKLLHOELOHELHEEOHL: " + movieRecords[2][1]);
+       // System.out.println("HEKLLHOELOHELHEEOHL: " + movieRecords[2][1]);
 
         return false;
     }
