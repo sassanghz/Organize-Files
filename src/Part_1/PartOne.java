@@ -159,32 +159,31 @@ public class PartOne {
 
                 // System.out.println(movieRecords[0][0]);
 
-                try {
-                    for (int movieFile = 0; movieFile < goodMovieIndex; movieFile++) {
-                        for (int movieCategory = 1; movieCategory < 10 + 1; movieCategory++) {
+                for (int movieFile = 0; movieFile < goodMovieIndex; movieFile++) {
+                    for (int movieCategory = 1; movieCategory < 10 + 1; movieCategory++) {
 
-                            boolean goodMovieLength = isValidMovieLength(movieRecords[movieFile]);
+                        boolean goodMovieLength = isValidMovieLength(movieRecords[movieFile]);
 
-                            boolean goodMovieYear = isValidYear(movieRecords[movieFile][1]);
+                        boolean goodMovieYear = isValidYear(movieRecords[movieFile][1]);
 
-                            boolean goodMovieTitle = isValidTitle(movieRecords[movieFile][2]);
+                        boolean goodMovieTitle = isValidTitle(movieRecords[movieFile][2]);
 
-                            boolean goodMovieDuration = isValidDuration(movieRecords[movieFile][3]);
+                        boolean goodMovieDuration = isValidDuration(movieRecords[movieFile][3]);
 
-                            boolean goodMovieGenre = isValidGenre(movieRecords[movieFile][4]);
+                        boolean goodMovieGenre = isValidGenre(movieRecords[movieFile][4]);
 
-                            boolean goodMovieRating = isValidRating(movieRecords[movieFile][5]);
+                        boolean goodMovieRating = isValidRating(movieRecords[movieFile][5]);
 
-                            boolean goodMovieScore = isValidScore(movieRecords[movieFile][6]);
+                        boolean goodMovieScore = isValidScore(movieRecords[movieFile][6]);
 
-                            boolean goodMovieDirector = isValidDirector(movieRecords[movieFile][7]);
+                        boolean goodMovieDirector = isValidDirector(movieRecords[movieFile][7]);
 
-                            boolean goodMovieActor1 = isValidActor1(movieRecords[movieFile][8]);
+                        boolean goodMovieActor1 = isValidActor1(movieRecords[movieFile][8]);
 
-                            boolean goodMovieActor2 = isValidActor2(movieRecords[movieFile][9]);
+                        boolean goodMovieActor2 = isValidActor2(movieRecords[movieFile][9]);
 
-                            boolean goodMovieActor3 = isValidActor3(movieRecords[movieFile][10]);
-
+                        boolean goodMovieActor3 = isValidActor3(movieRecords[movieFile][10]);
+                        try {
                             if (goodMovieLength && goodMovieYear && goodMovieGenre && goodMovieDuration
                                     && goodMovieScore
                                     && goodMovieRating && goodMovieTitle && goodMovieDirector && goodMovieActor1
@@ -193,6 +192,7 @@ public class PartOne {
                                 String genre = findGenre(movieRecords[movieFile][3]);
                                 String writeToFile = OutputFile(genre);
                                 writeRecordToFile(writeToFile, line);
+                                return true;
 
                             } else if (!goodMovieLength) {
                                 throw new MissingFieldsException(
@@ -229,25 +229,22 @@ public class PartOne {
                                         "Semantic Error: Name is not valid in record: " + movieRecords[movieFile][0]);
                             }
 
+                        } catch (BadYearException | BadTitleException | BadScoreException | BadDurationException
+                                | BadRatingException
+                                | BadNameException e) {
+                            String writeOutputToFile = "bad_movie_records.txt";
+                            FileWriter writer = new FileWriter(writeOutputToFile, true);
+                            BufferedWriter writeToBadFile = new BufferedWriter(writer);
+
+                            writeToBadFile.write("\n------------------------\n");
+                            writeToBadFile.write("Semantic Error:" + movieRecords[0][0]);
+                            writeToBadFile.write("\n------------------------\n");
+                            writeToBadFile.write("\nRecord: " + movieRecords[0][0]);
+                            writeToBadFile.write("\n------------------------\n");
+
+                            writeToBadFile.close();
                         }
                     }
-                } catch (BadYearException | BadTitleException | BadScoreException | BadDurationException
-                        | BadRatingException
-                        | BadNameException e) {
-
-                    String writeOutputToFile = "bad_movie_records.txt";
-                    FileWriter writer = new FileWriter(writeOutputToFile, true);
-                    BufferedWriter writeToBadFile = new BufferedWriter(writer);
-
-                    writeToBadFile.write("\n------------------------\n");
-                    writeToBadFile.write("Semantic Error:" + movieRecords[0][0]);
-                    writeToBadFile.write("\n------------------------\n");
-                    writeToBadFile.write("\nRecord: " + movieRecords[0][0]);
-                    writeToBadFile.write("\n------------------------\n");
-
-                    writeToBadFile.close();
-
-                    return false;
 
                 }
 
@@ -256,7 +253,7 @@ public class PartOne {
 
         System.out.println("HEKLLHOELOHELHEEOHL: " + movieRecords[2][1]);
 
-        return true;
+        return false;
     }
 
     private static boolean isValidMovieLength(String[] movie) {
