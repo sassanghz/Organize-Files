@@ -1,6 +1,7 @@
 package Driver;
 
 import Movie.Movie;
+import Part_1.MovieProcessor;
 import Part_1.PartOne;
 import Part_2.PartTwo;
 import Part_3.PartThree;
@@ -11,7 +12,9 @@ public class Driver {
 
         String part1_manifest = "src/DataBase/";
 
-        String part2_manifest = PartOne.doPart1(part1_manifest);
+        String part2_manifest = MovieProcessor.doPart1(part1_manifest);
+
+        System.out.println("Part 2 manifest: " + part2_manifest);
 
         //String part3_manifest = PartTwo.doPart2(part2_manifest);
 

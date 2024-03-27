@@ -57,7 +57,7 @@ public class PartOne {
                         System.out.println(line);
                         output += line + "\n";
                         writer.write(line + "\n");// writing to the textfile
-                        
+                    
                         if(!validateAndWriteRecord(reader, fileNames, fileNames, i)){
                             System.out.println("Program is validating and writing to the bad record:"); // testing
                             badOutput += line + "\n";
@@ -92,7 +92,7 @@ public class PartOne {
                         if (categories.length == 10) {
                             
                             System.out.println("CHECKING: " + categories[9]); // testing
-                            if (validateAndWriteRecord(reader, movieArray, categories, row)) {
+                            if (validateAndWriteRecord(reader, movieArray, categories, goodMovieIndex)) {
                                 System.out.println("Program is validating and writing to the good record:"); // testing
                                 output += line + "\n";
                             }else{
@@ -105,7 +105,7 @@ public class PartOne {
                                 movieArray[goodMovieIndex] = line;
                             }
 
-                            if (validateAndWriteRecord(reader, movieArray, categories, row)) {
+                            if (validateAndWriteRecord(reader, movieArray, categories, goodMovieIndex)) {
                                 System.out.println("Program is validating and writing to record"); // testing
                                 output += line + "\n";
                             }
@@ -173,8 +173,10 @@ public class PartOne {
         String line = "";
         String[][] movieRecords = new String[goodMovieIndex][11];
         for (int i = 0; i < goodMovieIndex; i++) {
+            
             movieRecords[i][0] = movieArray[i]; // copying the 1D array of movieArray into a 2D array of movieRecords
-                                                // (which will also store the categories)
+            
+            // (which will also store the categories)
             // System.out.println(movieArray[0]); // TESTING
         }
 
