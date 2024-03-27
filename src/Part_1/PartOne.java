@@ -32,14 +32,14 @@ public class PartOne {
         FileWriter writer = null;
         FileWriter badWriter = null;
         String line = "";
-        String goodOutput = "part2_manifest.txt";
+        String output = "part2_manifest.txt";
         String badOutput = "bad_movie_records.txt";
 
         File directoryName = new File(part1_manifest);
 
         try {
-            
-            writer = new FileWriter(goodOutput);
+           
+            writer = new FileWriter(output);
             badWriter = new FileWriter(badOutput);
             int row = 0;
             
@@ -55,7 +55,7 @@ public class PartOne {
                     if(line.split("") != null){
                         row++;
                         System.out.println(line);
-                        goodOutput += line + "\n";
+                        output += line + "\n";
                         writer.write(line + "\n");// writing to the textfile
                         
                         if(!validateAndWriteRecord(reader, fileNames, fileNames, i)){
@@ -66,7 +66,7 @@ public class PartOne {
                     }
                 }
             }
-           
+
             System.out.println("THE ROW IS : " + row);
             String[] badMovie = new String[row];
             String[] movieArray = new String[row];
@@ -78,6 +78,7 @@ public class PartOne {
             
                 String count = String.valueOf(i);
                 System.out.println(directoryName.list().length);
+                
                 File folder = new File("src/DataBase/Movies199" + count + ".csv");
 
                 reader = new BufferedReader(new FileReader(folder));
@@ -91,15 +92,11 @@ public class PartOne {
                         if (categories.length == 10) {
                             
                             System.out.println("CHECKING: " + categories[9]); // testing
-                            
                             if (validateAndWriteRecord(reader, movieArray, categories, row)) {
-                            
-                                System.out.println("Program is validating and writing to the good record"); // testing
-                                goodOutput += line + "\n";
-                            
+                                System.out.println("Program is validating and writing to the good record:"); // testing
+                                output += line + "\n";
                             }else{
-                            
-                                System.out.println("Program is validating and writing to the bad record:");
+                                System.out.println("Program is validating and writing to the bad record:"); // testing
                                 badOutput += line + "\n";
                             }
                             // add code to check if movie has errors [use validateAndWriteRecord() method]
@@ -107,6 +104,11 @@ public class PartOne {
 
                             for (int j = 0; j < 10; j++) {
                                 movieArray[goodMovieIndex] = line;
+                            }
+
+                            if (validateAndWriteRecord(reader, movieArray, categories, row)) {
+                                System.out.println("Program is validating and writing to record"); // testing
+                                output += line + "\n";
                             }
                             goodMovieIndex++;
                             System.out.println(line);
@@ -121,26 +123,21 @@ public class PartOne {
             
             System.out.println("MOVIE: " + movieArray[598]); // testing
             System.out.println("BAD MOVIE: " + badMovie[598]); // testing
-            return badOutput;
 
+            return badOutput;
+           
         } catch (IOException e){
-            
             System.out.println("Error reading file: " + e.getMessage());
             e.printStackTrace(); // testing
         
         } catch (BadGenreException | MissingFieldsException | ExcessFieldsException | MissingQuotesException
                 | BadYearException | BadTitleException | BadScoreException | BadDurationException | BadRatingException
                 | BadNameException e) {
-        
-                    e.printStackTrace();
-        
+            e.printStackTrace();
         }catch (Exception e) {
-            
             System.out.println("Error reading file: " + e.getMessage());
             e.printStackTrace(); // testing
-        
         }finally{
-        
             try {
         
                 if (reader != null) {
@@ -163,11 +160,12 @@ public class PartOne {
         }
         
         //String is returned, which contains all the movie records that passed the validation process and were written to the text file.
-        return goodOutput;
+        return output;
 
     }
 
-    public static boolean validateAndWriteRecord(BufferedReader reader, String[] movieArray, String[] categories, int goodMovieIndex)
+    public static boolean validateAndWriteRecord(BufferedReader reader, String[] movieArray, String[] categories,
+            int goodMovieIndex)
             throws IOException, BadGenreException, MissingFieldsException,
             ExcessFieldsException, MissingQuotesException,
             BadYearException, BadTitleException, BadScoreException, BadDurationException,
@@ -178,194 +176,122 @@ public class PartOne {
         for (int i = 0; i < goodMovieIndex; i++) {
             movieRecords[i][0] = movieArray[i]; // copying the 1D array of movieArray into a 2D array of movieRecords
                                                 // (which will also store the categories)
+            // System.out.println(movieArray[0]); // TESTING
         }
 
         int numCategories = 0;
         for (int i = 0; i < goodMovieIndex; i++) {
             for (int j = 1; j < 10 + 1; j++) {
+                // System.out.println(
+                // "Category number is: " + numCategories + ", j index is: " + j + " AND it is
+                // storing "
+                // + categories[numCategories]);
+
                 movieRecords[i][j] = categories[numCategories];
                 numCategories++;
 
-                if (numCategories == 10) {
+                if (j == 10) {
                     numCategories = 0;
-                    break;
                 }
-            }
-        }
 
-        System.out.println("HEKLLHOELOHELHEEOHL: " + movieRecords[598][2]);
+                // System.out.println(movieRecords[0][0]);
 
-        try {
-            for (int movieFile = 0; movieFile < goodMovieIndex; movieFile++) {
-                for (int movieCategory = 1; movieCategory < 10 + 1; movieCategory++) {
-                    boolean goodMovieLength = isValidMovieLength(movieRecords[movieFile]);
+                for (int movieFile = 0; movieFile < goodMovieIndex; movieFile++) {
+                    for (int movieCategory = 1; movieCategory < 10 + 1; movieCategory++) {
 
-                    boolean goodMovieYear = isValidYear(Integer.parseInt(movieRecords[movieFile][1]));
+                        boolean goodMovieLength = isValidMovieLength(movieRecords[movieFile]);
 
-                    boolean goodMovieGenre = isValidGenre(movieRecords[movieFile][4]);
+                        boolean goodMovieYear = isValidYear(movieRecords[movieFile][1]);
 
-                    boolean goodMovieDuration = isValidDuration(Integer.parseInt(movieRecords[movieFile][3]));
+                        boolean goodMovieTitle = isValidTitle(movieRecords[movieFile][2]);
 
-                    boolean goodMovieScore = isValidScore(Double.parseDouble(movieRecords[movieFile][6]));
+                        boolean goodMovieDuration = isValidDuration(movieRecords[movieFile][3]);
 
-                    boolean goodMovieRating = isValidRating(movieRecords[movieFile][5]);
+                        boolean goodMovieGenre = isValidGenre(movieRecords[movieFile][4]);
 
-                    boolean goodMovieTitle = isValidTitle(movieRecords[movieFile][1]);
+                        boolean goodMovieRating = isValidRating(movieRecords[movieFile][5]);
 
-                    boolean goodMovieArtist1 = isValidArtist1(movieRecords[movieFile][8]);
+                        boolean goodMovieScore = isValidScore(movieRecords[movieFile][6]);
 
-                    boolean goodMovieArtist2 = isValidArtist2(movieRecords[movieFile][9]);
+                        boolean goodMovieDirector = isValidDirector(movieRecords[movieFile][7]);
 
-                    boolean goodMovieArtist3 = isValidArtist3(movieRecords[movieFile][10]);
+                        boolean goodMovieActor1 = isValidActor1(movieRecords[movieFile][8]);
 
-                    
+                        boolean goodMovieActor2 = isValidActor2(movieRecords[movieFile][9]);
 
-                    if (goodMovieLength && goodMovieYear && goodMovieGenre && goodMovieDuration && goodMovieScore
-                            && goodMovieRating && goodMovieTitle && goodMovieArtist1 && goodMovieArtist2
-                            && goodMovieArtist3) {
-                        String genre = findGenre(movieRecords[movieFile][3]);
-                        String writeToFile = OutputFile(genre);
-                        writeRecordToFile(writeToFile, line);
+                        boolean goodMovieActor3 = isValidActor3(movieRecords[movieFile][10]);
+                        try {
+                            if (goodMovieLength && goodMovieYear && goodMovieGenre && goodMovieDuration
+                                    && goodMovieScore
+                                    && goodMovieRating && goodMovieTitle && goodMovieDirector && goodMovieActor1
+                                    && goodMovieActor2
+                                    && goodMovieActor3) {
+                                String genre = findGenre(movieRecords[movieFile][3]);
+                                String writeToFile = OutputFile(genre);
+                                writeRecordToFile(writeToFile, line);
+                                return true;
 
-                    } else if(!goodMovieLength) {
-                        throw new MissingFieldsException("Syntax Error: Missing fields in record: " + line);
-                    }else if(!goodMovieYear) {
-                        throw new BadYearException("Semantic Error: Year is not between 1990 and 1999 in record: " + line);
-                    }else if(!goodMovieGenre) {
-                        throw new BadGenreException("Semantic Error: " + movieRecords[movieFile][3] + " is not a valid genre");
-                    }else if(!goodMovieDuration) {
-                        throw new BadDurationException("Semantic Error: Duration is not between 0 and 300 in record: " + line);
-                    }else if(!goodMovieScore) {
-                        throw new BadScoreException("Semantic Error: Score is not between 0 and 10 in record: " + line);
-                    }else if(!goodMovieRating) {
-                        throw new BadRatingException("Semantic Error: Rating is not valid in record: " + line);
-                    }else if(!goodMovieTitle) {
-                        throw new BadTitleException("Semantic Error: Excess fields in record: " + line);
-                    }else if(!goodMovieArtist1) {
-                        throw new BadNameException("Semantic Error: Name is not valid in record: " + line);
-                    }else if(!goodMovieArtist2) {
-                        throw new BadNameException("Semantic Error: Name is not valid in record: " + line);
-                    }else if(!goodMovieArtist3) {
-                        throw new BadNameException("Semantic Error: Name is not valid in record: " + line);
+                            } else if (!goodMovieLength) {
+                                throw new MissingFieldsException(
+                                        "Syntax Error: Missing fields in record: " + movieRecords[movieFile][0]);
+                            } else if (!goodMovieYear) {
+                                throw new BadYearException(
+                                        "Semantic Error: Year is not between 1990 and 1999 in record: "
+                                                + movieRecords[movieFile][0]);
+                            } else if (!goodMovieGenre) {
+                                throw new BadGenreException(
+                                        "Semantic Error: " + movieRecords[movieFile][3] + " is not a valid genre");
+                            } else if (!goodMovieDuration) {
+                                throw new BadDurationException(
+                                        "Semantic Error: Duration is not between 0 and 300 in record: "
+                                                + movieRecords[movieFile][0]);
+                            } else if (!goodMovieScore) {
+                                throw new BadScoreException(
+                                        "Semantic Error: Score is not between 0 and 10 in record: "
+                                                + movieRecords[movieFile][0]);
+                            } else if (!goodMovieRating) {
+                                throw new BadRatingException(
+                                        "Semantic Error: Rating is not valid in record: " + movieRecords[movieFile][0]);
+                            } else if (!goodMovieTitle) {
+                                throw new BadTitleException(
+                                        "Semantic Error: Excess fields in record: " + movieRecords[movieFile][0]);
+                            } else if (!goodMovieActor1) {
+                                throw new BadNameException(
+                                        "Semantic Error: Name is not valid in record: " + movieRecords[movieFile][0]);
+                            } else if (!goodMovieActor2) {
+                                throw new BadNameException(
+                                        "Semantic Error: Name is not valid in record: " + movieRecords[movieFile][0]);
+                            } else if (!goodMovieActor3) {
+                                throw new BadNameException(
+                                        "Semantic Error: Name is not valid in record: " + movieRecords[movieFile][0]);
+                            }
+
+                        } catch (BadYearException | BadTitleException | BadScoreException | BadDurationException
+                                | BadRatingException
+                                | BadNameException e) {
+                            String writeOutputToFile = "bad_movie_records.txt";
+                            FileWriter writer = new FileWriter(writeOutputToFile, true);
+                            BufferedWriter writeToBadFile = new BufferedWriter(writer);
+
+                            writeToBadFile.write("\n------------------------\n");
+                            writeToBadFile.write("Semantic Error:" + movieRecords[0][0]);
+                            writeToBadFile.write("\n------------------------\n");
+                            writeToBadFile.write("\nRecord: " + movieRecords[0][0]);
+                            writeToBadFile.write("\n------------------------\n");
+
+                            writeToBadFile.close();
+                        }
                     }
 
                 }
+
             }
-        } catch (BadYearException | BadTitleException | BadScoreException | BadDurationException | BadRatingException | BadNameException e) {
-
-            String writeOutputToFile = "bad_movie_records.txt";
-            FileWriter writer = new FileWriter(writeOutputToFile, true);
-            BufferedWriter writeToBadFile = new BufferedWriter(writer);
-            
-            writeToBadFile.write("\n------------------------\n");
-            writeToBadFile.write("Semantic Error:" + movieRecords[0][0]);
-            writeToBadFile.write("\n------------------------\n");
-            writeToBadFile.write("\nRecord: " + movieRecords[0][0]);
-            writeToBadFile.write("\n------------------------\n");
-
-            writeToBadFile.close();
-
-            return false;
-
-
         }
-        return true;
+
+        System.out.println("HEKLLHOELOHELHEEOHL: " + movieRecords[2][1]);
+
+        return false;
     }
-
-    // public static boolean validateAndWriteRecord(String line, String fileName)
-    // throws IOException, BadGenreException,
-    // MissingFieldsException, ExcessFieldsException, MissingQuotesException,
-    // BadYearException, BadTitleException,
-    // BadScoreException, BadDurationException, BadRatingException, BadNameException
-    // {
-
-    // String genre = "";
-    // String[] movieRecords = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
-
-    // try {
-
-    // if (movieRecords.length == 10) { WRITTEN
-
-    // genre = findGenre(movieRecords[3]);
-
-    // if (!isValidGenre(genre)) { WRITTEN
-
-    // throw new BadGenreException("Semantic Error: " + genre + " is not a valid
-    // genre");
-
-    // }
-
-    // String writeToFile = OutputFile(genre);
-    // writeRecordToFile(writeToFile, line);
-
-    // } else if (movieRecords.length < 10) {
-
-    // throw new MissingFieldsException("Syntax Error: Missing fields in record: " +
-    // line);
-
-    // } else if (movieRecords.length > 10) {
-
-    // throw new ExcessFieldsException("Syntax Error: Excess fields in record: " +
-    // line);
-
-    // } else if (!movieRecords[1].startsWith("\"") ||
-    // !movieRecords[1].endsWith("\"")) {
-
-    // throw new MissingQuotesException("Syntax Error: Missing quotes in record: " +
-    // line);
-
-    // } else if (Integer.parseInt(movieRecords[0]) < 1990 ||
-    // Integer.parseInt(movieRecords[0]) > 1999) { WRITTEN
-
-    // throw new BadYearException("Semantic Error: Year is not between 1990 and 1999
-    // in record: " + line);
-
-    // } else if (Integer.parseInt(movieRecords[2]) < 0 ||
-    // Integer.parseInt(movieRecords[2]) > 300) { WRITTEN
-
-    // throw new BadDurationException("Semantic Error: Duration is not between 0 and
-    // 300 in record: " + line);
-
-    // } else if (Double.parseDouble(movieRecords[5]) < 0 ||
-    // Double.parseDouble(movieRecords[5]) > 10) { WRITTEN
-
-    // throw new BadScoreException("Semantic Error: Score is not between 0 and 10 in
-    // record: " + line);
-
-    // } else if (!isValidRating(movieRecords[4])) { WRITTEN
-
-    // throw new BadRatingException("Semantic Error: Rating is not valid in record:
-    // " + line);
-
-    // } else if (movieRecords[1].split("\"").length > 3) {
-
-    // throw new BadTitleException("Semantic Error: Excess fields in record: " +
-    // line);
-
-    // } else {
-
-    // throw new BadNameException("Semantic Error: Name is not valid in record: " +
-    // line);
-
-    // }
-
-    // } catch (BadYearException | BadTitleException | BadScoreException |
-    // BadDurationException | BadRatingException
-    // | BadNameException e) {
-
-    // String writeOutputToFile = "bad_movie_records.txt";
-    // FileWriter writer = new FileWriter(writeOutputToFile, true);
-    // BufferedWriter writeToBadFile = new BufferedWriter(writer);
-
-    // writeToBadFile.write("\n------------------------\n");
-    // writeToBadFile.write("Semantic Error:" + fileName);
-    // writeToBadFile.write("\n------------------------\n");
-    // writeToBadFile.write("\nRecord: " + line);
-    // writeToBadFile.write("\n------------------------\n");
-    // writeToBadFile.write("");
-    // writeToBadFile.close();
-    // }
-    // }
 
     private static boolean isValidMovieLength(String[] movie) {
         if (movie.length == 10) {
@@ -375,24 +301,36 @@ public class PartOne {
         }
     }
 
-    private static boolean isValidYear(int movie) {
-        if (movie >= 1990 && movie <= 1999) {
-            return true;
-        } else {
+    private static boolean isValidYear(String movie) {
+        String[] movieYears = { "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999" };
+        if (movie == "" || movie == null) {
             return false;
         }
+
+        for (String validYear : movieYears) {
+            if (movie.equals(validYear)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
     }
 
     private static boolean isValidTitle(String title) {
-        if (title.startsWith("\"") && title.endsWith("\"")) {
+        if (title == "" || title == null) {
+            return false;
+        } else if (title.startsWith("\"") && title.endsWith("\"")) {
             return true;
         } else {
             return false;
         }
     }
 
-    private static boolean isValidDuration(int duration) {
-        if (duration >= 0 && duration <= 300) {
+    private static boolean isValidDuration(String duration) {
+        if (duration == "" || duration == null) {
+            return false;
+        } else if (Integer.parseInt(duration) >= 0 && Integer.parseInt(duration) <= 300) {
             return true;
         } else {
             return false;
@@ -412,39 +350,58 @@ public class PartOne {
     }
 
     private static boolean isValidRating(String rating) {
-        return rating.equals("G") || rating.equals("PG") || rating.equals("PG-13") ||
-                rating.equals("R") || rating.equals("NC-17") || rating.equals("Unrated");
+        if (rating == "" || rating == null) {
+            return false;
+        } else if (rating.equals("G") || rating.equals("PG") || rating.equals("PG-13") ||
+                rating.equals("R") || rating.equals("NC-17") || rating.equals("Unrated")) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
-    private static boolean isValidScore(double score) {
-        if (score > 0 || score < 10) {
+    private static boolean isValidScore(String score) {
+        if (score == "" || score == null) {
+            return false;
+        } else if (score.startsWith("\"") || score.endsWith("\"") || score == "") {
+            return false;
+        } else if (Double.parseDouble(score) >= 0 || Double.parseDouble(score) <= 10) {
             return true;
         } else {
             return false;
         }
     }
 
-    private static boolean isValidArtist1(String artist1) {
-
-        if(artist1 != null && !artist1.isEmpty() && artist1.matches("^[a-zA-Z]*$")) {
+    private static boolean isValidDirector(String director) {
+        if (director != null && !director.isEmpty() && director.matches("^[a-zA-Z]*$")) {
             return true;
         } else {
             return false;
         }
     }
 
-    private static boolean isValidArtist2(String artist2) {
+    private static boolean isValidActor1(String actor1) {
 
-        if(artist2 != null && !artist2.isEmpty() && artist2.matches("^[a-zA-Z]*$")) {
+        if (actor1 != null && !actor1.isEmpty() && actor1.matches("^[a-zA-Z]*$")) {
             return true;
         } else {
             return false;
         }
     }
 
-    private static boolean isValidArtist3(String artist3) {
+    private static boolean isValidActor2(String actor2) {
 
-        if(artist3 != null && !artist3.isEmpty() && artist3.matches("^[a-zA-Z]*$")) {
+        if (actor2 != null && !actor2.isEmpty() && actor2.matches("^[a-zA-Z]*$")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private static boolean isValidActor3(String actor3) {
+
+        if (actor3 != null && !actor3.isEmpty() && actor3.matches("^[a-zA-Z]*$")) {
             return true;
         } else {
             return false;
