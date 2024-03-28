@@ -27,9 +27,7 @@ public class Driver {
         } else {
             System.out.println("Error occurred during deserialization.");
         }
-
-
-
+        
         return;
     }
 }
