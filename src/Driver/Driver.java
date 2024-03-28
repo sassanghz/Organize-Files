@@ -16,21 +16,20 @@ public class Driver {
 
         System.out.println("Part 2 manifest: " + part2_manifest);
 
-        //String part3_manifest = PartTwo.doPart2(part2_manifest);
+        String part3_manifest = PartTwo.doPart2(part2_manifest);
 
-        // Movie[][] all_movies = PartThree.doPart3(part3_manifest);
-        // if (all_movies != null) {
-        // PartThree.navigateMovieArrays(all_movies);
-        // } else {
-        // System.out.println("Error occurred during deserialization.");
-        // }
-        // PartTwo.doPart2();
-        // String part1_manifest = "DataBase/";
-        /*
-         * String part2_manifest = do_part1(part1_manifest);
-         * String part3_manifest = do_part2(part2_manifest);
-         * do_part3(part3_manifest);
-         * return;
-         */
+        System.out.println("Part 3 manifest: " + part3_manifest);
+
+        Movie[][] all_movies = PartThree.doPart3(part3_manifest);
+
+        if (all_movies != null) {
+            PartThree.navigateMovieArrays(all_movies);
+        } else {
+            System.out.println("Error occurred during deserialization.");
+        }
+
+
+
+        return;
     }
 }
