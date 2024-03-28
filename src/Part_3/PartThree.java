@@ -13,6 +13,11 @@ public class PartThree {
     
     private static int currentGenreIndex = -1;
 
+    
+    /** 
+     * @param part3_manifest
+     * @return Movie[][]
+     */
     public static Movie[][] doPart3(String part3_manifest) {
         
         try{
@@ -41,6 +46,12 @@ public class PartThree {
         }
     }
 
+    
+    /** 
+     * @param manifestFileName
+     * @return String[]
+     * @throws IOException
+     */
     private static String[] readManifest(String manifestFileName) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(manifestFileName));
         String line;
@@ -62,6 +73,10 @@ public class PartThree {
         return fileNames;
     }
 
+    
+    /** 
+     * @param all_movies
+     */
     public static void navigateMovieArrays(Movie[][] all_movies) {
         int[] currentIndices = new int[all_movies.length]; // Array to store current indices for each genre
         int currentGenreIndex = -1; // Index of the currently selected genre
@@ -134,6 +149,10 @@ public class PartThree {
         }
     }
 
+    
+    /** 
+     * @param all_movies
+     */
     private static void displayGenreMenu(Movie[][] all_movies) {
         System.out.println("----------------------------");
         System.out.println("Genre Sub-Menu");
@@ -145,6 +164,11 @@ public class PartThree {
         System.out.println("----------------------------");
     }
 
+    
+    /** 
+     * @param i
+     * @return String
+     */
     private static String getGenreName(int i) {
         switch (i) {
             case 0: return "musical";
@@ -169,6 +193,12 @@ public class PartThree {
         }
     }
 
+    
+    /** 
+     * @param movies
+     * @param currentIndices
+     * @param scanner
+     */
     private static void navigateMovies(Movie[] movies, int[] currentIndices, Scanner scanner) {
         int currentIndex = currentIndices[currentGenreIndex];
         int totalRecords = movies.length;
@@ -217,6 +247,10 @@ public class PartThree {
     }
     
 
+    
+    /** 
+     * @param movie
+     */
     private static void displayMovie(Movie movie) {
         System.out.println("----------------------------");
         System.out.println("Title: " + movie.getTitle());

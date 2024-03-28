@@ -9,6 +9,11 @@ import java.io.IOException;
 
 public class MovieProcessor {
     
+    
+    /** 
+     * @param part1_manifest
+     * @return String
+     */
     public static String doPart1(String part1_manifest){
 
         BufferedReader reader = null;
@@ -67,6 +72,11 @@ public class MovieProcessor {
         }
     }
 
+    
+    /** 
+     * @param line
+     * @return boolean
+     */
     private static boolean validateAndWriteRecord(String line){
 
         if(line == null || line.isEmpty()){
@@ -92,6 +102,11 @@ public class MovieProcessor {
         return isValid;
     }
 
+    
+    /** 
+     * @param dataFields
+     * @return boolean
+     */
     private static boolean isValidRecord(String[] dataFields){
 
         if (dataFields.length != 10) {
@@ -191,6 +206,11 @@ public class MovieProcessor {
         
     }
 
+    
+    /** 
+     * @param error
+     * @param line
+     */
     private static void writeError(String error, String line){
         
         try{
@@ -207,6 +227,11 @@ public class MovieProcessor {
         }
     }
 
+    
+    /** 
+     * @param fileName
+     * @param line
+     */
     private static void writeToFile(String fileName, String line){
         
         try{
@@ -223,6 +248,11 @@ public class MovieProcessor {
     }
 
 
+    
+    /** 
+     * @param genre
+     * @return boolean
+     */
     private static boolean isValidGenre(String genre) {
         String[] validGenres = { "musical", "comedy", "animation", "adventure", "drama", "crime",
                 "biography", "horror", "action", "documentary", "fantasy", "mystery", "sci-fi",
@@ -235,6 +265,11 @@ public class MovieProcessor {
         return false;
     }
 
+    
+    /** 
+     * @param rating
+     * @return boolean
+     */
     private static boolean isValidRating(String rating) {
         if (rating == "" || rating == null) {
             return false;
