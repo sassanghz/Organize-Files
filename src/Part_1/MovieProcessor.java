@@ -100,6 +100,7 @@ public class MovieProcessor {
                 if (dataFields[3].toLowerCase().equals(genres[i])) {
                     String genreCSVFile = genres[i] + ".csv";
                     writeToFile(genreCSVFile, line);
+                    break;
                 }
             }
         } else {
