@@ -109,9 +109,9 @@ public class MovieProcessor {
 
         try{
             int year = Integer.parseInt(dataFields[0]);
-            if (year < 1990 || year > 1999) {
-                writeError("Semantic Error:", String.join(",", dataFields));
-                return false;
+            if (year >= 1990 || year <= 1999) {
+                //writeError("Semantic Error:", String.join(",", dataFields));
+                return true;
             }
 
         }catch(NumberFormatException e){
@@ -122,9 +122,9 @@ public class MovieProcessor {
         try{
             int duration = Integer.parseInt(dataFields[3]);
 
-            if (duration < 30 || duration > 300) {
-                writeError("Semantic Error:", String.join(",", dataFields));
-                return false;
+            if (duration >= 30 || duration <= 300) {
+                //writeError("Semantic Error:", String.join(",", dataFields));
+                return true;
             }
         }catch(NumberFormatException e){
             writeError("Semantic Error:", String.join(",", dataFields));
@@ -134,9 +134,9 @@ public class MovieProcessor {
         try{
             int score = Integer.parseInt(dataFields[5]);
 
-            if(score <0 || score > 10){
-                writeError("Semantic Error:", String.join(",", dataFields));
-                return false;
+            if(score >= 0 || score <= 10){
+                //writeError("Semantic Error:", String.join(",", dataFields));
+                return true;
             }
         }catch(NumberFormatException e){
             writeError("Semantic Error:", String.join(",", dataFields));
@@ -145,9 +145,9 @@ public class MovieProcessor {
 
         try{
             // validate the title
-            if(dataFields[1] == "" || dataFields[1] == null){
-                writeError("Semantic Error:", String.join(",", dataFields));
-                return false;
+            if(dataFields[1] != "" || dataFields[1] != null){
+                //writeError("Semantic Error:", String.join(",", dataFields));
+                return true;
             }
         }catch(NumberFormatException e){
             writeError("Semantic Error:", String.join(",", dataFields));
@@ -156,10 +156,11 @@ public class MovieProcessor {
 
         try{
 
-            if(dataFields[6] == "" || dataFields[6] == null || dataFields[7] == "" || dataFields[7] == null || dataFields[8] == "" || dataFields[8] == null || dataFields[9] == "" || dataFields[9] == null){
-                writeError("Semantic Error:", String.join(",", dataFields));
-                return false;
+            if(dataFields[6] != "" || dataFields[6] != null || dataFields[7] != "" || dataFields[7] != null || dataFields[8] != "" || dataFields[8] != null || dataFields[9] != "" || dataFields[9] != null){
+                //writeError("Semantic Error:", String.join(",", dataFields));
+                return true;
             }
+        
         }catch(NumberFormatException e){
             // to ensure that the error message is written to the file in case of either an exception or a condition is met
             writeError("Semantic Error:", String.join(",", dataFields));
@@ -167,9 +168,9 @@ public class MovieProcessor {
         }
 
         try{
-            if(!isValidGenre(dataFields[3])){
-                writeError("Semantic Error:", String.join(",", dataFields));
-                return false;
+            if(isValidGenre(dataFields[3])){
+                //writeError("Semantic Error:", String.join(",", dataFields));
+                return true;
             }
         }catch(NumberFormatException e){
             writeError("Semantic Error:", String.join(",", dataFields));
@@ -177,16 +178,16 @@ public class MovieProcessor {
         }
 
         try{
-            if(!isValidRating(dataFields[4])){
-                writeError("Semantic Error:", String.join(",", dataFields));
-                return false;
+            if(isValidRating(dataFields[4])){
+                //writeError("Semantic Error:", String.join(",", dataFields));
+                return true;
             }
         }catch(NumberFormatException e){
             writeError("Semantic Error:", String.join(",", dataFields));
             return false;
         }
 
-        return true;
+        return false;
         
     }
 
@@ -209,7 +210,7 @@ public class MovieProcessor {
     private static void writeToFile(String fileName, String line){
         
         try{
-            FileWriter writer = new FileWriter(fileName, true);
+            FileWriter writer = new FileWriter("part2_manifest.txt", true);
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
             
             bufferedWriter.write(line + "\n");

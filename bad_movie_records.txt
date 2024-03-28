@@ -1,22 +1,32 @@
-1990,"Tremors",96,Comedy,PG-13,7.1,Ron Underwood,Reba McEntire,Ariana Richards,Michael Gross,
-1990,"The Adventures of Ford Fairlane",104,Action,R,6.3,Renny Harlin,Lauren Holly,Gilbert Gottfried,David Patrick Kelly,
-1990,Child's Play 2,72,Fantasy,R,5.7,John Lafia,Jenny Agutter,Beth Grant,Greg Germann,
-1990,Predator 2,103,"Action",R,6.2,Stephen Hopkins,Adam Baldwin,Robert Davi,Kevin Peter Hall,
-1990,Gremlins 2: The New Batch,106,Comedy,PG-13,6.3,Joe Dante,Christopher Lee,Robert Picardo,Phoebe Cates,
-1990,Goodfellas,146,Biography,R,8.7,Martin Scorsese,Robert De Niro,Mike Starr,Paul Sorvino,
-1990,Arachnophobia,103,Comedy,PG-13,6.3,Frank Marshall,Julian Sands,Peter Jason,Brian McNamara,
-1990,Edward Scissorhands,105,Fantasy,PG-13,7.9,Tim Burton,Johnny Depp,Dianne Wiest,Conchata Ferrell,
-1990,Flatliners,115,Drama,R,6.6,Joel Schumacher,Julia Roberts,Oliver Platt,Hope Davis,
-1990,The Godfather: Part III,170,Crime,R,7.6,Francis Ford Coppola,Al Pacino,Joe Mantegna,Bridget Fonda,
-1990,Days of Thunder,107,Action,PG-13,5.9,Tony Scott,Tom Cruise,Robert Duvall,Randy Quaid,
-1990,Back to the Future Part III,118,Adventure,PG,7.4,Robert Zemeckis,Lea Thompson,Jeffrey Weissman,Thomas F. Wilson,
-1990,Kindergarten Cop,111,Action,PG-13,6,Ivan Reitman,Richard Tyson,Cathy Moriarty,Penelope Ann Miller,
-1990,Dick Tracy,105,Action,PG,"6.1",Warren Beatty,Charlie Korsmo,Warren Beatty,Seymour Cassel,
-1990,Die Hard 2,124,Action,R,7.1,Renny Harlin,Bruce Willis,John Amos,Franco Nero,
 1990,Total Recall,113,Action,R,7.5,Paul Verhoeven,Ronny Cox,Rachel Ticotin,Marshall Bell,actor 4?
-1990,Total Recall,113,Action,R,7.5,Paul Verhoeven,Ronny Cox,Rachel Ticotin,Marshall Bell,
-1990,The Hunt for Red October,135,Action,PG,7.6,John McTiernan,Scott Glenn,Jeffrey Jones,Courtney B. Vance,
-1990,Pretty Woman,125,Comedy,R,6.9,Garry Marshall,Julia Roberts,Hector Elizondo,Jason Alexander,
-1990,Dances with Wolves,236,Adventure,PG-13,8,Kevin Costner,Mary McDonnell,Michael Spears,Maury Chaykin,
-1990,Ghost,127,Drama,PG-13,7,Jerry Zucker,Demi Moore,Tony Goldwyn,Phil Leeds,
-1990,Home Alone,103,Comedy,PG,7.5,Chris Columbus,Macaulay Culkin,Devin Ratray,Catherine O'Hara,
+1991,"Freddy's Dead, The Final Nightmare",93,Comedy,R,4.9,Rachel Talalay,Johnny Depp,Tom Arnold,Yaphet Kotto
+l992,Unforgiven,131,Drama,R,8.3,Clint Eastwood,Clint Eastwood,Morgan Freeman,Frances Fisher
+1993,"Blood In, Blood Out",330,Crime,R,8,Taylor Hackford,Delroy Lindo,Jesse Borrego,Raymond Cruz
+1993,Hocus Pocus,96,Comedy,PG,6.7,,Vinessa Shaw,Omri Katz,Larry Bagby
+1994,There Goes My Baby,99,Comedy,R,6.4,Floyd Mutrux,Ricky Schroder,,Seymour Cassel
+1994,Wyatt Earp,212,Adventure,PG-13,,Lawrence Kasdan,Dennis Quaid,Catherine O'Hara,Isabella Rossellini
+1994,Richie Rich,,Comedy,PG,5.2,Donald Petrie,Macaulay Culkin,John Larroquette,Jonathan Hyde
+1996,Bound,109,Krime,R,,Lana Wachowski,Christopher Meloni,Kevin Michael Richardson,Peter Spellos
+l996,Bogus,110,Comedy,,5.3,Norman Jewison,Haley Joel Osment,Nancy Travis,Andrea Martin
+-1996,The Fan,116,Action,R,,Tony Scott,Robert De Niro,Kurt Fuller,Ellen Barkin
+1997,"First Love, Last Rites",94,Drama,R,5.5,Jesse Peretz,Robert John Burke,Eli Marienthal,Natasha Gregson Wagner
+1997,"Cats Don,t Dance",75,Animation,G,6.9,Mark Dindal,George Kennedy,Frank Welker,Hal Holbrook
+1997,Chasing Amy,113,Comedy,R,7.3,Kevin Smith,Matt Damon,Ethan Suplee,
+1999,"Happy, Texas",98,Comedy,PG-13,6.3,Mark Illsley,Ally Walker,Illeana Douglas,Jeremy Northam
+1999,Crazy in Alabama,111,Komedy,PG-13,6.3,Antonio Banderas,Meat Loaf,,Noah Emmerich
+l999,A Dog of Flanders,,,PG,6.3,Kevin Brodie,Bruce McGill,Cheryl Ladd,Jack Warden
+2999,Foolish,384,Comedy,R,4.3,Dave Meyers,,Clifton Powell,Marla Gibbs
+1999,"Girl, Interrupted",127,Biography,R,7.3,James Mangold,Angelina Jolie Pitt,Clea DuVall,Vanessa Redgrave
+-1999,The Bone Collector,118,Crime,,6.7,Phillip Noyce,Denzel Washington,Angelina Jolie Pitt,Leland Orser
+1999,,102,Adventure,PG,7.3,Dean Parisot,Alan Rickman,Enrico Colantoni,Robin Sachs
+en Barkin
+Syntax Error: Missing end quote in a quoted field in record: 1999,Crazy in Alabama,111,Komedy,PG-13,6.3,Antonio Banderas,Meat Loaf,,Noah Emmerich
+Record: 1999,Crazy in Alabama,111,Komedy,PG-13,6.3,Antonio Banderas,Meat Loaf,,Noah Emmerich
+Syntax Error: Missing end quote in a quoted field in record: l999,A Dog of Flanders,,,PG,6.3,Kevin Brodie,Bruce McGill,Cheryl Ladd,Jack Warden
+Record: l999,A Dog of Flanders,,,PG,6.3,Kevin Brodie,Bruce McGill,Cheryl Ladd,Jack Warden
+Syntax Error: Missing end quote in a quoted field in record: 2999,Foolish,384,Comedy,R,4.3,Dave Meyers,,Clifton Powell,Marla Gibbs
+Record: 2999,Foolish,384,Comedy,R,4.3,Dave Meyers,,Clifton Powell,Marla Gibbs
+Syntax Error: Missing end quote in a quoted field in record: -1999,The Bone Collector,118,Crime,,6.7,Phillip Noyce,Denzel Washington,Angelina Jolie Pitt,Leland Orser
+Record: -1999,The Bone Collector,118,Crime,,6.7,Phillip Noyce,Denzel Washington,Angelina Jolie Pitt,Leland Orser
+Syntax Error: Missing end quote in a quoted field in record: 1999,,102,Adventure,PG,7.3,Dean Parisot,Alan Rickman,Enrico Colantoni,Robin Sachs
+Record: 1999,,102,Adventure,PG,7.3,Dean Parisot,Alan Rickman,Enrico Colantoni,Robin Sachs
