@@ -41,7 +41,7 @@
 1991,Star Trek VI: The Undiscovered Country,110,Action,PG,7.2,Nicholas Meyer,Leonard Nimoy,Kurtwood Smith,Nichelle Nichols
 1991,Teenage Mutant Ninja Turtles II: The Secret of the Ooze,88,Action,PG,6,Michael Pressman,Kevin Nash,Paige Turco,Ernie Reyes Jr.
 1991,Cape Fear,128,Crime,R,7.3,Martin Scorsese,Robert De Niro,Robert Mitchum,Joe Don Baker
-1991,The Naked Gun 2ï¿½: The Smell of Fear,85,Comedy,PG-13,6.8,David Zucker,George Kennedy,Priscilla Presley,O.J. Simpson
+1991,The Naked Gun 2«: The Smell of Fear,85,Comedy,PG-13,6.8,David Zucker,George Kennedy,Priscilla Presley,O.J. Simpson
 1991,The Addams Family,99,Comedy,PG-13,6.8,Barry Sonnenfeld,Anjelica Huston,Raul Julia,Carel Struycken
 1991,Hook,333,Adventure,PG,6.7,Steven Spielberg,Robin Williams,Julia Roberts,Bob Hoskins
 1991,The Silence of the Lambs,138,Crime,R,8.6,Jonathan Demme,Anthony Hopkins,Scott Glenn,Anthony Heald
@@ -269,7 +269,7 @@
 1996,Beavis and Butt-Head Do America,81,Adventure,PG-13,6.8,Mike Judge,Bruce Willis,Demi Moore,John Doman
 1996,Executive Decision,133,Action,R,6.4,Stuart Baird,Oliver Platt,Joe Morton,J.T. Walsh
 2996,Broken Arrow,900,Action,R,60,John Woo,Delroy Lindo,Samantha Mathis,Bob Gunton
-1996,The English Patient,162,Drama,R,7.4,Anthony Minghella,Colin Firth,Kristin Scott Thomas,Jaï¿½rgen Prochnow
+1996,The English Patient,162,Drama,R,7.4,Anthony Minghella,Colin Firth,Kristin Scott Thomas,Ja¬rgen Prochnow
 1996,Space Jam,88,Adventure,PG,6.3,Joe Pytka,Bill Murray,Wayne Knight,Michael Jordan
 1996,Star Trek: First Contact,111,Action,PG-13,7.6,Jonathan Frakes,LeVar Burton,Alfre Woodard,Jonathan Frakes
 1996,The Hunchback of Notre Dame,91,Animation,G,6.9,Gary Trousdale,Demi Moore,Jason Alexander,Bill Fagerbakke
@@ -501,7 +501,7 @@
 1999,Office Space,89,Comedy,R,7.8,Mike Judge,Gary Cole,Stephen Root,Diedrich Bader
 1999,Chill Factor,102,Action,R,5.2,Hugh Johnson,David Paymer,Kevin J. O'Connor,Hudson Leick
 1999,Boys Don't Cry,118,Biography,R,7.6,Kimberly Peirce,Alicia Goranson,Brendan Sexton III,Jeannetta Arnette
-1999,Wing Commander,100,Action,PG-13,4.1,Chris Roberts,Saffron Burrows,David Suchet,Jaï¿½rgen Prochnow
+1999,Wing Commander,100,Action,PG-13,4.1,Chris Roberts,Saffron Burrows,David Suchet,Ja¬rgen Prochnow
 1999,The Muse,97,Comedy,PG-13,5.6,Albert Brooks,Jeff Bridges,Bradley Whitford,Albert Brooks
 1999,The Adventures of Elmo in Grouchland,73,Adventure,G,5.8,Gary Halvorson,Vanessa Williams,Kevin Clash,Caroll Spinney
 1999,In Dreams,100,Drama,R,5.5,Neil Jordan,Robert Downey Jr.,Aidan Quinn,Paul Guilfoyle
@@ -562,29 +562,6 @@
 1999,End of Days,121,Action,R,5.7,Peter Hyams,CCH Pounder,Mark Margolis,Udo Kier
 1999,Blue Streak,93,Action,PG-13,6.3,Les Mayfield,Peter Greene,Dave Chappelle,Tamala Jones
 1999,The Thomas Crown Affair,113,Krime,R,6.8,John McTiernan,Mark Margolis,Faye Dunaway,Denis Leary
-1999,Deep Blue Sea,105,Action,R,5.8,Renny Harlin,LL Cool J,Michael Rapaport,Saffron Burrows
-1999,Any Given Sunday,156,Drama,R,6.8,Oliver Stone,Al Pacino,Dennis Quaid,LL Cool J
-1999,The Talented Mr. Ripley,139,Crime,R,7.3,Anthony Minghella,Philip Seymour Hoffman,Matt Damon,Jack Davenport
-1999,Payback,90,Action,R,7.1,Brian Helgeland,Bill Duke,Deborah Kara Unger,William Devane
-1999,Entrapment,113,Action,PG-13,6.2,Jon Amiel,Will Patton,Kevin McNally,Maury Chaykin
-1999,The Haunting,113,Fantasy,PG-13,4.9,Jan de Bont,Liam Neeson,Lili Taylor,Virginia Madsen
-1999,Inspector Gadget,110,Action,PG,4.1,David Kellogg,Matthew Broderick,Rene Auberjonois,Rupert Everett
-1999,American Pie,95,Comedy,R,7,Paul Weitz,Alyson Hannigan,Shannon Elizabeth,Natasha Lyonne
-1999,The General's Daughter,116,Drama,R,6.3,Simon West,Daniel von Bargen,Timothy Hutton,Clarence Williams III
-1999,Analyze This,103,Comedy,R,6.7,Harold Ramis,Robert De Niro,Chazz Palminteri,Molly Shannon
-1999,Wild Wild West,106,Action,PG-13,4.8,Barry Sonnenfeld,Will Smith,Salma Hayek,Bai Ling
-1999,Double Jeopardy,105,Crime,R,6.4,Bruce Beresford,Bruce Greenwood,Annabeth Gish,Bruce Campbell
-1999,American Beauty,122,Drama,R,8.4,Sam Mendes,Kevin Spacey,Peter Gallagher,Ara Celi
-1999,The Green Mile,189,Crime,R,8.5,Frank Darabont,Tom Hanks,Jeffrey DeMunn,Michael Jeter
-1999,The Blair Witch Project,81,Horror,R,6.4,Daniel Myrick,Heather Donahue,Joshua Leonard,Michael C. Williams
-1999,Runaway Bride,116,Comedy,PG,5.5,Garry Marshall,Julia Roberts,Christopher Meloni,Hector Elizondo
-1999,Big Daddy,93,Comedy,PG-13,6.4,Dennis Dugan,Steve Buscemi,Adam Sandler,Joey Lauren Adams
-1999,The Matrix,136,Action,R,8.7,Lana Wachowski,Keanu Reeves,Marcus Chong,Gloria Foster
-1999,Austin Powers: The Spy Who Shagged Me,95,Action,PG-13,6.6,Jay Roach,Muse Watson,Verne Troyer,Robert Wagner
-1999,Toy Story 2,82,Adventure,G,7.9,John Lasseter,Tom Hanks,John Ratzenberger,Wayne Knight
-1999,The Sixth Sense,107,Drama,PG-13,8.1,M. Night Shyamalan,Bruce Willis,Haley Joel Osment,Olivia Williams
-1999,Star Wars: Episode I - The Phantom Menace,136,Action,PG,6.5,George Lucas,Natalie Portman,Liam Neeson,Ian McDiarmid
-an Rickman,Enrico Colantoni,Robin Sachs
 1999,Deep Blue Sea,105,Action,R,5.8,Renny Harlin,LL Cool J,Michael Rapaport,Saffron Burrows
 1999,Any Given Sunday,156,Drama,R,6.8,Oliver Stone,Al Pacino,Dennis Quaid,LL Cool J
 1999,The Talented Mr. Ripley,139,Crime,R,7.3,Anthony Minghella,Philip Seymour Hoffman,Matt Damon,Jack Davenport
