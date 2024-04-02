@@ -22,13 +22,18 @@ public class MovieProcessor {
                 "family", "romance", "thriller", "western" };
 
         for (int i = 0; i < genres.length; i++) { // creating the genre files
+
             File genreFile = new File(genres[i] + ".csv");
-            genreFile.delete();
+
+            if (genreFile.exists()) {
+                genreFile.delete();
+            }
+
             createFile(genres[i] + ".csv");
         }
 
         try {
-            writer = new FileWriter(output, false);
+            writer = new FileWriter(output);
             badWriter = new FileWriter(badOutput);
 
             File directoryName = new File(part1_manifest);
@@ -52,9 +57,6 @@ public class MovieProcessor {
                         }
                     }
                 }
-            }
-            for (int i = 0; i < genres.length; i++) { // creating the genre files
-                writer.write(genres[i] + ".csv\n");
             }
 
             return output;
@@ -101,10 +103,10 @@ public class MovieProcessor {
                     "biography", "horror", "action", "documentary", "fantasy", "mystery", "sci-fi",
                     "family", "romance", "thriller", "western" };
 
-            for (int i = 0; i < genres.length; i++) { // writing to the genre csv files
+            for (int i = 0; i < genres.length; i++) { // creating the genre files
                 if (dataFields[3].toLowerCase().equals(genres[i])) {
                     String genreCSVFile = genres[i] + ".csv";
-                    writeToFile(genreCSVFile, line);
+                    writeToFile(genreCSVFile, line); // adwwadawdwada
                     break;
                 }
             }
