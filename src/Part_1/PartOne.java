@@ -26,23 +26,18 @@ public class PartOne {
 
      public static String[] fileNames;
 
-     public static void doPart1(){
+    public static String doPart1(String part1_manifest) {
         // String manifest = "part1_manifest.txt";
         // java.io.File maninfestFile = new java.io.File("src/Driver/"+manifest);
         
         // // todo : for loop, that reads the manifest file and reads the files in the manifest file
 
-
-
-
-
-
         BufferedReader reader = null;
 
-        java.io.File directoryName = new java.io.File("src/DataBase/");
+        java.io.File directoryName = new java.io.File(part1_manifest);
 
         try{
-            //File folder = new File("src/Driver/part1_manifest.txt");
+
             for (int i = 0; i < directoryName.list().length; i++) {
                 String count =  String.valueOf(i);
                 final File folder = new File("src/DataBase/Movies199"+count+".csv");
@@ -58,6 +53,14 @@ public class PartOne {
 
             reader.close();
 
+        }
+        catch(Exception e){
+            System.out.println("fuck me");
+        }
+
+
+
+        try{
             for(String fileName: fileNames){
                 
                 File inputFile = new File(fileName);
@@ -74,7 +77,7 @@ public class PartOne {
                 }
             }
         }catch(Exception e){
-            System.out.println("Error reading file: " + e.getMessage());
+            System.out.println(e.getMessage());
         }
 
      }
