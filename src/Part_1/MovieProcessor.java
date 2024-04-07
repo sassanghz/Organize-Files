@@ -1,3 +1,8 @@
+// -----------------------------------------------------
+// Assignment 2
+// Question: Part 1
+// Written by: Sassan Ghazi 40226489 and Alexander Hsu 40247307
+// -----------------------------------------------------
 package Part_1;
 
 import java.io.BufferedReader;
@@ -9,66 +14,46 @@ import java.io.IOException;
 
 public class MovieProcessor {
 
-    public static String doPart1(String part1_manifest) {
-
-        BufferedReader reader = null;
+     /**
+     * Processes the movie records from a given directory and separates them into valid and invalid records.
+     * Valid records are written to "part2_manifest.txt", and invalid records are written to "bad_movie_records.txt".
+     *
+     * @param part1_manifest The directory containing the movie records.
+     * @return The output file name "part2_manifest.txt" if successful, an empty string otherwise.
+     */
+    public static void doPart1(String part1_manifest) {
+        // Your existing code for file reading and writing
         FileWriter writer = null;
         FileWriter badWriter = null;
-        String output = "part2_manifest.txt";
-        String badOutput = "bad_movie_records.txt";
-
-        String[] genres = { "musical", "comedy", "animation", "adventure", "drama", "crime",
-                "biography", "horror", "action", "documentary", "fantasy", "mystery", "sci-fi",
-                "family", "romance", "thriller", "western" };
-
-        for (int i = 0; i < genres.length; i++) { // creating the genre files
-
-            File genreFile = new File(genres[i] + ".csv");
-
-            if (genreFile.exists()) {
-                genreFile.delete();
-            }
-
-            createFile(genres[i] + ".csv");
-        }
-
+    
         try {
-            writer = new FileWriter(output);
-            badWriter = new FileWriter(badOutput);
-
+            writer = new FileWriter("part2_manifest.txt");
+            badWriter = new FileWriter("bad_movie_records.txt");
+    
             File directoryName = new File(part1_manifest);
             File[] files = directoryName.listFiles();
             if (files == null) {
                 System.out.println("No files found in the specified directory.");
-                return "";
+                return;
             }
-
+    
             for (File file : files) {
                 if (file.isFile() && file.getName().endsWith(".csv")) {
-                    reader = new BufferedReader(new FileReader(file));
+                    BufferedReader reader = new BufferedReader(new FileReader(file));
                     String line;
                     while ((line = reader.readLine()) != null) {
                         if (!line.trim().isEmpty()) {
-                            if (validateAndWriteRecord(line)) {
-                                // writer.write(line + "\n");
-                            } else {
-                                badWriter.write(line + "\n");
-                            }
+                            validateAndWriteRecord(line, writer, badWriter);
                         }
                     }
+                    reader.close();
                 }
             }
-
-            return output;
         } catch (IOException e) {
             System.out.println("Error reading/writing file: " + e.getMessage());
             e.printStackTrace();
-            return "";
         } finally {
             try {
-                if (reader != null) {
-                    reader.close();
-                }
                 if (writer != null) {
                     writer.close();
                 }
@@ -81,42 +66,41 @@ public class MovieProcessor {
             }
         }
     }
+    /**
+     * Validates a movie record and writes it to the appropriate output file.
+     *
+     * @param line The movie record to validate.
+     * @return True if the record is valid, false otherwise.
+     */
 
-    private static boolean validateAndWriteRecord(String line) {
-
+     private static void validateAndWriteRecord(String line, FileWriter writer, FileWriter badWriter) {
         if (line == null || line.isEmpty()) {
-            writeToFile("bad_movie_records.txt", "Empty record: " + line);
-            return false;
+            writeToFile(badWriter, "Empty record: " + line);
+            return;
         }
-
+    
         String[] dataFields = line.split(",");
-
         if (dataFields.length != 10) {
-            writeToFile("bad_movie_records.txt", "Incorrect number of data fields: " + line);
-            return false;
+            writeToFile(badWriter, "Incorrect number of data fields: " + line);
+            return;
         }
-
+    
         boolean isValid = isValidRecord(dataFields);
-
+    
         if (isValid) {
-            String[] genres = { "musical", "comedy", "animation", "adventure", "drama", "crime",
-                    "biography", "horror", "action", "documentary", "fantasy", "mystery", "sci-fi",
-                    "family", "romance", "thriller", "western" };
-
-            for (int i = 0; i < genres.length; i++) { // creating the genre files
-                if (dataFields[3].toLowerCase().equals(genres[i])) {
-                    String genreCSVFile = genres[i] + ".csv";
-                    writeToFile(genreCSVFile, line); // adwwadawdwada
-                    break;
-                }
-            }
+            String genre = dataFields[3].toLowerCase().trim();
+            String genreCSVFile = genre + ".csv";
+            writeToFile(writer, line, genreCSVFile);
         } else {
-            writeToFile("bad_movie_records.txt", line);
+            writeToFile(badWriter, line);
         }
-
-        return isValid;
     }
 
+    
+    /** 
+     * @param dataFields
+     * @return boolean
+     */
     private static boolean isValidRecord(String[] dataFields) {
 
         if (dataFields.length != 10) {
@@ -219,6 +203,11 @@ public class MovieProcessor {
 
     }
 
+    
+    /** 
+     * @param error
+     * @param line
+     */
     private static void writeError(String error, String line) {
 
         try {
@@ -235,20 +224,32 @@ public class MovieProcessor {
         }
     }
 
-    private static void writeToFile(String fileName, String line) {
-
+    
+    /** 
+     * @param fileName
+     * @param line
+     */
+    private static void writeToFile(FileWriter fileWriter, String line, String fileName) {
         try {
-            FileWriter writer = new FileWriter(fileName, true);
-            BufferedWriter bufferedWriter = new BufferedWriter(writer);
-
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(line + "\n");
             bufferedWriter.close();
-
+    
+            // Append the genre CSV file name to part2_manifest.txt
+            FileWriter manifestWriter = new FileWriter("part2_manifest.txt", true);
+            BufferedWriter manifestBufferedWriter = new BufferedWriter(manifestWriter);
+            manifestBufferedWriter.write(fileName + "\n");
+            manifestBufferedWriter.close();
         } catch (IOException e) {
             System.out.println("Error writing to file: " + e.getMessage());
             e.printStackTrace();
         }
     }
+    /**
+     * Creates a file with the given file name.
+     *
+     * @param fileName The name of the file to create.
+     */
 
     public static void createFile(String fileName) {
         try {
@@ -262,6 +263,11 @@ public class MovieProcessor {
 
     }
 
+    
+    /** 
+     * @param genre
+     * @return boolean
+     */
     private static boolean isValidGenre(String genre) {
         String[] validGenres = { "musical", "comedy", "animation", "adventure", "drama", "crime",
                 "biography", "horror", "action", "documentary", "fantasy", "mystery", "sci-fi",
@@ -274,6 +280,11 @@ public class MovieProcessor {
         return false;
     }
 
+    
+    /** 
+     * @param rating
+     * @return boolean
+     */
     private static boolean isValidRating(String rating) {
         if (rating == "" || rating == null) {
             return false;
