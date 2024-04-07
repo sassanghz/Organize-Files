@@ -27,6 +27,7 @@ public class Movie implements Serializable {
         this.actor2 = null;
         this.actor3 = null;
     }
+    
 
     public Movie(int year, String title, int duration, String genres, String rating, double score, String director,
             String actor1, String actor2, String actor3) {
@@ -42,19 +43,35 @@ public class Movie implements Serializable {
         this.actor3 = actor3;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getYear() {
         return year;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getTitle() {
         return title;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getDuration() {
         return duration;
     }
 
-    public String getGenres() {
+    
+    /** 
+     * @return String
+     */
+    public String getGenre() {
         return genres;
     }
 
@@ -77,52 +94,95 @@ public class Movie implements Serializable {
     public String getActor2() {
         return actor2;
     }
+    /** 
+     * @param actor3
+     */
 
     public String getActor3() {
         return actor3;
     }
+    /** 
+     * @param year
+     */
 
     public void setYear(int year) {
         this.year = year;
     }
+    /** 
+     * @param title
+     */
 
     public void setTitle(String title) {
         this.title = title;
     }
+    /** 
+     * @param duration
+     */
 
     public void setDuration(int duration) {
         this.duration = duration;
     }
+    /** 
+     * @param genres
+     */
 
     public void setGenres(String genres) {
         this.genres = genres;
     }
+    /** 
+     * @param rating
+     */
 
     public void setRating(String rating) {
         this.rating = rating;
     }
 
+    
+    /** 
+     * @param score
+     */
     public void setScore(double score) {
         this.score = score;
     }
+     /** 
+     * @param director
+     */
 
     public void setDirector(String director) {
         this.director = director;
     }
 
+    
+    /** 
+     * @param actor1
+     */
     public void setActor1(String actor1) {
         this.actor1 = actor1;
     }
+     /** 
+     * @param actor2
+     */
 
     public void setActor2(String actor2) {
         this.actor2 = actor2;
     }
+    
+    /** 
+     * @param actor3
+    //  */
 
     public void setActor3(String actor3) {
+        // set actor3
         this.actor3 = actor3;
     }
 
+    
+    /** 
+     * @param obj
+     * @return boolean
+     */
     @Override
+    
     public boolean equals(Object obj) {
         if (obj == null || obj == this || this.getClass() != obj.getClass()) {
             return false;
@@ -142,6 +202,10 @@ public class Movie implements Serializable {
         }
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return "Movie{" +

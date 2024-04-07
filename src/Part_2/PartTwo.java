@@ -12,11 +12,17 @@ import Movie.Movie;
 
 public class PartTwo {
     
-    public static void doPart2(){
-         
+    
+    /** 
+     * @param part2_manifest
+     * @return String
+     */
+    public static String doPart2(String part2_manifest) {
+        String resultMessage = "part3_manifest.txt";
+
         try {
-            BufferedReader manifestReader = new BufferedReader(new FileReader("part2_manifest.txt"));
-            BufferedWriter manifestWriter = new BufferedWriter(new FileWriter("part3_manifest.txt"));
+            BufferedReader manifestReader = new BufferedReader(new FileReader(part2_manifest));
+            BufferedWriter manifestWriter = new BufferedWriter(new FileWriter(resultMessage));
 
             String line;
             while ((line = manifestReader.readLine()) != null) {
@@ -32,14 +38,26 @@ public class PartTwo {
 
             manifestReader.close();
             manifestWriter.close();
+
+            resultMessage = "Serialization successful!";
         } catch (IOException e) {
             e.printStackTrace();
+            resultMessage = "Error occurred during serialization.";
         }
+
+        return resultMessage;
     }
 
-    private static Movie[] loadMoviesFromFile(String fileName) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(fileName));
-        int numMovies = countLines(fileName);
+    
+    /** 
+     * @param genreFile
+     * @return Movie[]
+     * @throws IOException
+     */
+    private static Movie[] loadMoviesFromFile(String genreFile) throws IOException {
+        
+        BufferedReader reader = new BufferedReader(new FileReader(genreFile));
+        int numMovies = countLines(genreFile);
         Movie[] movies = new Movie[numMovies];  
 
         String line;
@@ -64,6 +82,11 @@ public class PartTwo {
         return movies;
     }
 
+    
+    /** 
+     * @param movies
+     * @param fileName
+     */
     private static void serializeMovies(Movie[] movies, String fileName) {
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(fileName))) {
             objectOutputStream.writeObject(movies);
@@ -72,6 +95,12 @@ public class PartTwo {
         }
     }
 
+    
+    /** 
+     * @param fileName
+     * @return int
+     * @throws IOException
+     */
     private static int countLines(String fileName) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(fileName));
         int lines = 0;
